@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entitymodel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/entitymodel.xsd">
+	<!-- ========================================================= -->
+	<!-- ======================== Defaults ======================= -->
+	<!-- ========================================================= -->
+	<title>Entity of ConstructionManagement Component</title>
+	<description>None</description>
+	<copyright></copyright>
+	<author>None</author>
+	<version></version>
+
+	<entity entity-name="tbl_site_master" package-name="org.ofbiz.constructionmanagement"
+		table-name="tbl_site_master" title="Site Master" version="1.0">
+		<field name="site_id" type="id-ne"></field>
+		<field name="site_name" type="name"></field>
+		<field name="site_add1" type="description"></field>
+		<field name="site_add2" type="description"></field>
+		<field name="site_phoneno" type="tel-number"></field>
+		<prim-key field="site_id" />
+		<index name="SITE_NAME_CON" unique="true" >
+		<index-field name="site_name" />
+		</index>
+
+	</entity>
+</entitymodel>

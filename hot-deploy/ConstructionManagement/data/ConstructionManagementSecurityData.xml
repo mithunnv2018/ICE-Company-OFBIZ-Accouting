@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    <SecurityPermission description="View operations in the ConstructionManagement Component." permissionId="_VIEW"/>
+    <SecurityPermission description="Create operations in the ConstructionManagement Component." permissionId="_CREATE"/>
+    <SecurityPermission description="Update operations in the ConstructionManagement Component." permissionId="_UPDATE"/>
+    <SecurityPermission description="Delete operations in the ConstructionManagement Component." permissionId="_DELETE"/>
+    <SecurityPermission description="ALL operations in the ConstructionManagement Component." permissionId="_ADMIN"/>
+    <SecurityGroupPermission groupId="FULLADMIN" permissionId="_ADMIN"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="_CREATE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="_DELETE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="_UPDATE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="_VIEW"/>
+    <SecurityGroupPermission groupId="VIEWADMIN" permissionId="_VIEW"/>
+    <SecurityGroupPermission groupId="BIZADMIN" permissionId="_ADMIN"/>
+</entity-engine-xml>

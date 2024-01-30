@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entitymodel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/entitymodel.xsd">
+    <!-- ========================================================= -->
+    <!-- ======================== Defaults ======================= -->
+    <!-- ========================================================= -->
+    <title>Entity of ICECompany Component</title>
+    <description>None</description>
+    <copyright></copyright>
+    <author>None</author>
+    <version></version>
+<entity entity-name="tbl_PrimaryGroup_Master" package-name="org.ofbiz.ICEInc"
+		title="Primary Group">
+		<field name="PrimGrp_Id" type="id-ne">
+			<description>Sequenced primary key</description>
+		</field>
+		<field name="PrimGrp_Name" type="long-varchar"></field>
+		<field name="Is_Deleted" type="indicator"></field>
+		<field name="PrimGrp_tag" type="numeric"></field>
+		<prim-key field="PrimGrp_Id" />
+	</entity>
+	<entity entity-name="tbl_MainCategory_Master" package-name="org.ofbiz.ICEInc"
+		title="Main Category">
+		<field name="MainCat_Id" type="id-ne">
+			<description>Sequenced primary key</description>
+		</field>
+		<field name="MainCat_Name" type="long-varchar"></field>
+		<field name="PrimGrp_Id" type="id-ne"></field>
+		<field name="Is_Deleted" type="indicator"></field>
+		<field name="MainCat_tag" type="numeric"></field>
+		<prim-key field="MainCat_Id" />
+		<relation type="many" fk-name="PrimGrpMainCat_Rel" title="Rel Primary Group, Main Group"
+			rel-entity-name="tbl_PrimaryGroup_Master">
+			<key-map field-name="PrimGrp_Id" rel-field-name="PrimGrp_Id" />
+		</relation>
+	</entity>
+	<entity entity-name="tbl_SubCategory_Master" package-name="org.ofbiz.ICEInc"
+		title="Main Category">
+		<field name="SubCat_Id" type="id-ne">
+			<description>Sequenced primary key</description>
+		</field>
+		<field name="SubCat_Name" type="long-varchar"></field>
+		<field name="MainCat_Id" type="id-ne"></field>
+		<field name="Is_Deleted" type="indicator"></field>
+		<field name="SubCat_tag" type="numeric"></field>
+		<prim-key field="SubCat_Id" />
+		<relation type="many" fk-name="ManiCatSubCat_Rel" title="Rel Main Group,Sub Category"
+			rel-entity-name="tbl_MainCategory_Master">
+			<key-map field-name="MainCat_Id" rel-field-name="MainCat_Id" />
+		</relation>
+	</entity>
+	<entity entity-name="tbl_StockCategory_Master" package-name="org.ofbiz.ICEInc"
+		title="Main Category">
+		<field name="StockCat_Id" type="id-ne">
+			<description>Sequenced primary key</description>
+		</field>
+		<field name="StockCat_Name" type="long-varchar"></field>
+		<field name="SubCat_Id" type="id-ne"></field>
+		<field name="Is_Deleted" type="indicator"></field>
+		<field name="StockCat_tag" type="numeric"></field>
+		<prim-key field="StockCat_Id" />
+		<relation type="many" fk-name="SubCatStockCat_Rel"
+			title="Rel Sub Category, Stock Category" rel-entity-name="tbl_SubCategory_Master">
+			<key-map field-name="SubCat_Id" rel-field-name="SubCat_Id" />
+		</relation>
+	</entity>
+	<entity entity-name="tbl_Unit_Master" package-name="org.ofbiz.ICEInc"
+		title="Main Category">
+		<field name="Unit_Id" type="id-ne">
+			<description>Sequenced primary key</description>
+		</field>
+		<field name="Unit_Name" type="long-varchar"></field>
+		<field name="Is_Deleted" type="indicator"></field>
+		<field name="Unit_Tag" type="numeric"></field>
+		<prim-key field="Unit_Id" />
+	</entity>
+	<entity entity-name="tbl_StockItem_Master" package-name="org.ofbiz.ICEInc"
+		title="Main Category">
+		<field name="StockIt_Id" type="id-ne">
+			<description>Sequenced primary key</description>
+		</field>
+		<field name="StockIt_Name" type="long-varchar"></field>
+		<field name="StockCat_Id" type="id-ne"></field>
+		<field name="StockIt_PurRate" type="currency-amount"></field>
+		<field name="StockIt_SaleRate" type="currency-amount"></field>
+		<field name="StockIt_Reorder" type="numeric"></field>
+		<field name="Unit_Id" type="id-ne"></field>
+		<field name="Is_Deleted" type="indicator"></field>
+		<field name="StockId_Tag" type="numeric"></field>
+		<prim-key field="StockIt_Id" />
+		<relation type="many" fk-name="StockCatStockItem_Rel"
+			title="Rel Stock Category, Stock Item" rel-entity-name="tbl_StockCategory_Master">
+			<key-map field-name="StockCat_Id" rel-field-name="StockCat_Id" />
+		</relation>
+		<relation type="many" fk-name="UnitStockItem_Rel"
+			title="Rel Stock Category, Stock Item" rel-entity-name="tbl_Unit_Master">
+			<key-map field-name="Unit_Id" rel-field-name="Unit_Id" />
+		</relation>
+	</entity>
+	<entity entity-name="tbl_Customer_Master" package-name="org.ofbiz.ICEInc"
+		title="Customer Details">
+		<field name="Cust_Id" type="id-ne">
+			<description>Sequenced primary key</description>
+		</field>
+		<field name="Cust_Name" type="long-varchar"></field>
+		<field name="Cust_Address" type="long-varchar"></field>
+		<field name="Cust_City" type="long-varchar"></field>
+		<field name="Cust_PostalCode" type="long-varchar"></field>
+		<field name="Cust_PhNo" type="long-varchar"></field>
+		<field name="Cust_EmailId" type="long-varchar"></field>	
+		<field name="Cust_Tag" type="numeric"></field>	
+		<prim-key field="Cust_Id" />	
+		<relation type="many" fk-name="SOCustomer"
+			title="Rel Sales Order, Customer" rel-entity-name="tbl_Customer_Master">
+			<key-map field-name="Cust_Id" rel-field-name="Cust_Id" />
+		</relation>	
+	</entity>
+	<entity entity-name="tbl_SalesTax_Details" package-name="org.ofbiz.ICEInc"
+		title="Sales Tax Details">
+		<field name="St_Id" type="numeric">
+			<description>Sequenced primary key</description>
+		</field>
+		<field name="St_Percentage" type="floating-point"></field>
+		<field name="st_Date" type="date"></field>		
+		<prim-key field="St_Id" />		
+	</entity>
+	<entity entity-name="tbl_SalesOrder_Details" package-name="org.ofbiz.ICEInc"
+		title="Sales Order Details">
+		<field name="So_Id" type="id-ne">
+			<description>Sequenced primary key</description>
+		</field>
+		<field name="So_Nos" type="long-varchar"></field>
+		<field name="So_Name" type="long-varchar"></field>
+		<field name="Cust_Id" type="id-ne"></field>
+		<field name="Sup_Id" type="id-ne"></field>
+		<field name="So_Status" type="long-varchar"></field>
+		<field name="So_Date" type="date"></field>
+		<field name="So_Amt" type="currency-amount"></field>
+		<field name="So_TaxPer" type="currency-amount"></field>
+		<field name="So_TaxAmt" type="currency-amount"></field>
+		<field name="So_AmtAdjust" type="currency-amount"></field>
+		<field name="So_TotalAmt" type="currency-amount"></field>
+		<field name="So_Remarks" type="long-varchar"></field>		
+		<field name="So_Tag" type="numeric"></field>
+		<field name="ac_year" type="long-varchar"></field>
+		<prim-key field="So_Id" />
+		<relation type="many" fk-name="SOCustomer"
+			title="Rel Sales Order, Customer" rel-entity-name="tbl_Customer_Master">
+			<key-map field-name="Cust_Id" rel-field-name="Cust_Id" />
+		</relation>
+		<relation type="many" fk-name="SOBags"
+			title="Rel Sales Order items, sales order" rel-entity-name="tbl_SOBags_Details">
+			<key-map field-name="So_Id" rel-field-name="So_Id" />
+		</relation>
+	</entity>
+	<entity entity-name="tbl_SOItems_Details" package-name="org.ofbiz.ICEInc"
+		title="Sales Order Item Details">
+		<field name="SoItems_Id" type="numeric">
+			<description>Sequenced primary key</description>
+		</field>
+		<field name="So_Id" type="id-ne"></field>
+		<field name="StockIt_Id" type="id-ne"></field>
+		<field name="SOItems_Qty" type="numeric"></field>
+		<field name="SOItems_Amt" type="currency-amount"></field>		
+		<prim-key field="SoItems_Id" />
+		<relation type="many" fk-name="SOItems"
+			title="Rel Sales Order items, sales order" rel-entity-name="tbl_SalesOrder_Details">
+			<key-map field-name="So_Id" rel-field-name="So_Id" />
+		</relation>		
+	</entity>
+	<entity entity-name="tbl_SOBags_Details" package-name="org.ofbiz.ICEInc"
+		title="Sales Order Bags Details">
+		<field name="SoBags_Id" type="numeric">
+			<description>Sequenced primary key</description>
+		</field>
+		<field name="So_Id" type="id-ne"></field>		
+		<field name="SOBags_Nos" type="numeric"></field>
+		<field name="SoBags_Date" type="date"></field>		
+		<prim-key field="SoBags_Id" />
+		<relation type="many" fk-name="SOBags"
+			title="Rel Sales Order items, sales order" rel-entity-name="tbl_SalesOrder_Details">
+			<key-map field-name="So_Id" rel-field-name="So_Id" />
+		</relation>		
+	</entity>
+	<entity entity-name="tbl_Receipt_Details" package-name="org.ofbiz.ICEInc"
+		title="Receipt Details">
+		<field name="Receipt_Id" type="id-ne">
+			<description>Sequenced primary key</description>
+		</field>
+		<field name="Receipt_Nos" type="long-varchar"></field>	
+		<field name="Cust_Id" type="id-ne"></field>				
+		<field name="Receipt_Date" type="date"></field>
+		<field name="Receipt_Amt" type="currency-amount"></field>	
+		<field name="Receipt_Paytype" type="long-varchar"></field>		
+		<field name="Receipt_Status" type="long-varchar"></field>	
+		<field name="Receipt_Remarks" type="long-varchar"></field>		
+		<field name="Receipt_Tag" type="numeric"></field>
+		<field name="ac_year" type="long-varchar"></field>
+		<prim-key field="Receipt_Id" />
+		<relation type="many" fk-name="SOCustomer"
+			title="Rel Sales Order, Customer" rel-entity-name="tbl_Customer_Master">
+			<key-map field-name="Cust_Id" rel-field-name="Cust_Id" />
+		</relation>
+	</entity>
+	<entity entity-name="tbl_SOPayment_Details" package-name="org.ofbiz.ICEInc"
+		title="Sales Order Payment Details">
+		<field name="SoPay_Id" type="numeric">
+			<description>Sequenced primary key</description>
+		</field>
+		<field name="So_Id" type="id-ne"></field>		
+		<field name="SoPay_TotalAmt" type="currency-amount"></field>
+		<field name="Receipt_Id" type="id-ne"></field>				
+		<prim-key field="SoPay_Id" />
+		<relation type="many" fk-name="SoPayment"
+			title="Rel Sales Order items, sales order" rel-entity-name="tbl_SalesOrder_Details">
+			<key-map field-name="So_Id" rel-field-name="So_Id" />
+		</relation>		
+	</entity>
+	<entity entity-name="tbl_Totalstock_Details" package-name="org.ofbiz.ICEInc"
+		title="Stock Details">
+		<field name="ts_Id" type="id-ne">
+			<description>Sequenced primary key</description>
+		</field>
+		<field name="StockIt_Id" type="id-ne"></field>		
+		<field name="ts_Qty" type="numeric"></field>
+		<field name="PO_Id" type="id-ne"></field>		
+		<field name="SO_Id" type="id-ne"></field>	
+		<field name="ts_Ref" type="long-varchar"></field>
+		<field name="ac_year" type="long-varchar"></field>	
+		<prim-key field="SoPay_Id" />
+		<relation type="many" fk-name="SoPayment"
+			title="Rel Sales Order items, sales order" rel-entity-name="tbl_SalesOrder_Details">
+			<key-map field-name="So_Id" rel-field-name="So_Id" />
+		</relation>		
+		<relation type="many" fk-name="SoPayment"
+			title="Rel Sales Order items, sales order" rel-entity-name="tbl_StockItem_Master">
+			<key-map field-name="StockIt_Id" rel-field-name="StockIt_Id" />
+		</relation>	
+	</entity>
+	<!--<view-entity  entity-name="VE_Max_tbl_MainCategory_Master"
+		package-name="org.ofbiz.ICEInc">
+		<member-entity entity-alias="MaxMainCategory"
+			entity-name="tbl_MainCategory_Master"></member-entity>
+		<alias entity-alias="MaxMainCategory" name="MainCat_tag"
+			function="max"></alias>
+	</view-entity>
+	<view-entity entity-name="VE_All_tbl_MainCategory_Master"
+		package-name="org.ofbiz.ICEInc">
+		<member-entity entity-alias="AllMainCategory"
+			entity-name="tbl_MainCategory_Master"/>
+		<alias-all entity-alias="AllMainCategory" />
+	</view-entity>
+	<view-entity  entity-name="VE_Max_tbl_SubCategory_Master"
+		package-name="org.ofbiz.ICEInc">
+		<member-entity entity-alias="MaxSubCategory"
+			entity-name="tbl_SubCategory_Master"></member-entity>
+		<alias entity-alias="MaxSubCategory" name="SubCat_tag"
+			function="max"></alias>
+	</view-entity>
+	<view-entity  entity-name="VE_Select_tbl_SubCategory_Master"
+		package-name="org.ofbiz.ICEInc">
+		<member-entity entity-alias="SelectSubCategory"
+			entity-name="tbl_SubCategory_Master"></member-entity>
+		<member-entity entity-alias="SelectMainCategory"
+			entity-name="tbl_MainCategory_Master"></member-entity>
+		<alias-all entity-alias="SelectSubCategory" prefix="ve">
+		</alias-all>
+		<alias-all entity-alias="SelectMainCategory" prefix="ve">
+		</alias-all>
+		<view-link rel-entity-alias="SelectSubCategory" entity-alias="SelectMainCategory">
+			<key-map field-name="MainCat_Id" rel-field-name="MainCat_Id"/>
+		</view-link>			
+	</view-entity>
+	<view-entity  entity-name="VE_Max_tbl_StockCategory_Master"
+		package-name="org.ofbiz.ICEInc">
+		<member-entity entity-alias="MaxStockCategory"
+			entity-name="tbl_StockCategory_Master"></member-entity>
+		<alias entity-alias="MaxStockCategory" name="StockCat_tag"
+			function="max"></alias>
+	</view-entity>
+-->
+<view-entity  entity-name="VE_Max_tbl_Customer_Master"
+		package-name="org.ofbiz.ICEInc">
+		<member-entity entity-alias="MaxCustomerMaster"
+			entity-name="tbl_Customer_Master"></member-entity>
+		<alias entity-alias="MaxCustomerMaster" name="Cust_Tag"
+			function="max"></alias>
+	</view-entity>
+	<view-entity  entity-name="VE_Select_tbl_Customer_Master"
+		package-name="org.ofbiz.ICEInc">
+		<member-entity entity-alias="SelectCustomerMaster"
+			entity-name="tbl_Customer_Master"></member-entity>		
+		<alias-all entity-alias="SelectCustomerMaster" prefix="ve">
+		</alias-all>				
+	</view-entity>
+	
+	<view-entity  entity-name="VE_Max_tbl_SalesTax_Details"
+		package-name="org.ofbiz.ICEInc">
+		<member-entity entity-alias="MaxSalesTax"
+			entity-name="tbl_SalesTax_Details"></member-entity>
+		<alias entity-alias="MaxSalesTax" name="St_Id"
+			function="max"></alias>
+	</view-entity>
+	
+	<entity entity-name="tbl_Financial_Year" package-name="org.ofbiz.ICEInc"
+		title="Financial Year">
+		<field name="Fy_Id" type="numeric">
+			<description>Sequenced primary key</description>
+		</field>
+		<field name="Fy_AcYear" type="long-varchar"></field>
+		<field name="Fy_Status" type="long-varchar"></field>
+		<prim-key field="Fy_Id" />		
+	</entity>
+	
+	<entity entity-name="tbl_Sequence_AcYear" package-name="org.ofbiz.ICEInc"
+		title="Sequence Year">
+		<field name="Sq_Id" type="numeric" >
+			<description>Sequenced primary key</description>
+		</field>
+		<field name="Fy_AcYear" type="long-varchar"></field>
+		<field name="Sequence_Id" type="numeric"></field>
+		<field name="Sq_Ref" type="long-varchar"></field>
+		<field name="fromdate" type="date"></field>
+		<field name="todate" type="date"></field>
+		<prim-key field="Sq_Id" />	
+	</entity>
+	<view-entity  entity-name="VE_Max_tbl_SalesOrder_Details"
+		package-name="org.ofbiz.ICEInc">
+		<member-entity entity-alias="MaxSalesOrder"
+			entity-name="tbl_SalesOrder_Details"></member-entity>
+		<alias entity-alias="MaxSalesOrder" name="So_Tag"
+			function="max"></alias>
+	</view-entity>
+	<view-entity  entity-name="VE_Max_tbl_SOItems_Details"
+		package-name="org.ofbiz.ICEInc">
+		<member-entity entity-alias="MaxSOItem"
+			entity-name="tbl_SOItems_Details"></member-entity>
+		<alias entity-alias="MaxSOItem" name="SoItems_Id"
+			function="max"></alias>
+	</view-entity>
+	<view-entity  entity-name="VE_Max_tbl_SOBags_Details"
+		package-name="org.ofbiz.ICEInc">
+		<member-entity entity-alias="MaxSOBags"
+			entity-name="tbl_SOBags_Details"></member-entity>
+		<alias entity-alias="MaxSOBags" name="SoBags_Id"
+			function="max"></alias>
+	</view-entity>
+	<view-entity  entity-name="VE_Max_tbl_SOPayment_Details"
+		package-name="org.ofbiz.ICEInc">
+		<member-entity entity-alias="MaxSOPayment"
+			entity-name="tbl_SOPayment_Details"></member-entity>
+		<alias entity-alias="MaxSOPayment" name="SoPay_Id"
+			function="max"></alias>
+	</view-entity>
+	<view-entity  entity-name="VE_Select_tbl_SalesOrder_Customer"
+		package-name="org.ofbiz.ICEInc">
+		<member-entity entity-alias="SelectCustomer"
+			entity-name="tbl_Customer_Master"></member-entity>
+		<member-entity entity-alias="SelectSalesOrder"
+			entity-name="tbl_SalesOrder_Details"></member-entity>
+		<alias-all entity-alias="SelectCustomer" prefix="ve">
+		</alias-all>
+		<alias-all entity-alias="SelectSalesOrder" prefix="ve">
+		</alias-all>
+		<view-link rel-entity-alias="SelectCustomer" entity-alias="SelectSalesOrder">
+			<key-map field-name="Cust_Id" rel-field-name="Cust_Id"/>
+		</view-link>			
+	</view-entity>
+	<view-entity  entity-name="VE_Select_tbl_Items_StockIt"
+		package-name="org.ofbiz.ICEInc">
+		<member-entity entity-alias="SelectSOItems"
+			entity-name="tbl_SOItems_Details"></member-entity>
+			
+		<member-entity entity-alias="SelectStockItems"
+			entity-name="tbl_StockItem_Master"></member-entity>
+			
+		<alias-all entity-alias="SelectSOItems" prefix="ve">
+		</alias-all>
+		<alias-all entity-alias="SelectStockItems" prefix="ve">
+		</alias-all>
+		
+		<view-link rel-entity-alias="SelectSOItems" entity-alias="SelectStockItems">
+			<key-map field-name="StockIt_Id" rel-field-name="StockIt_Id"/>
+		</view-link>			
+	</view-entity>
+	<view-entity  entity-name="VE_Select_tbl_SalesOrder_Bags"
+		package-name="org.ofbiz.ICEInc">
+		<member-entity entity-alias="SelectSalesOder"
+			entity-name="tbl_SalesOrder_Details"></member-entity>
+			
+		<member-entity entity-alias="SelectSOBags"
+			entity-name="tbl_SOBags_Details"></member-entity>			
+			
+		<alias entity-alias="SelectSOBags" name="MaxBags" field="SOBags_Nos" function="sum">
+		</alias>
+				
+		<alias entity-alias="SelectSalesOder" name="So_Nos" group-by="true">
+		</alias>
+		<alias entity-alias="SelectSalesOder" name="So_Id" group-by="true">
+		</alias>
+		<alias entity-alias="SelectSalesOder" name="Cust_Id" group-by="true">
+		</alias>
+		<alias entity-alias="SelectSalesOder" name="So_Tag" group-by="true">
+		</alias>
+		<view-link rel-entity-alias="SelectSOBags" entity-alias="SelectSalesOder">
+			<key-map field-name="So_Id" rel-field-name="So_Id"/>
+		</view-link>			
+	</view-entity>
+	<view-entity  entity-name="VE_Max_tbl_Receipt_Details"
+		package-name="org.ofbiz.ICEInc">
+		<member-entity entity-alias="MaxReceipt"
+			entity-name="tbl_Receipt_Details"></member-entity>
+		<alias entity-alias="MaxReceipt" name="Receipt_Tag"
+			function="max"></alias>
+	</view-entity>
+	<view-entity  entity-name="VE_Max_tbl_SOPayment_Details2"
+		package-name="org.ofbiz.ICEInc">
+		<member-entity entity-alias="MaxsoPAYMENT"
+			entity-name="tbl_SOPayment_Details"></member-entity>
+		<alias entity-alias="MaxsoPAYMENT" name="SoPay_Id"
+			function="max"></alias>
+	</view-entity>
+	<view-entity  entity-name="VE_Select_tbl_SalesOrder_Payment"
+		package-name="org.ofbiz.ICEInc">
+		<member-entity entity-alias="SelectSalesOder"
+			entity-name="tbl_SalesOrder_Details"></member-entity>
+			
+		<member-entity entity-alias="SelectSOPayment"
+			entity-name="tbl_SOPayment_Details"></member-entity>			
+			
+		<alias entity-alias="SelectSOPayment" name="SumPayment" field="SoPay_TotalAmt" function="sum">
+		</alias>
+				
+		<alias entity-alias="SelectSalesOder" name="So_Nos" group-by="true">
+		</alias>		
+		<alias entity-alias="SelectSalesOder" name="So_Id" group-by="true">
+		</alias>
+		<alias entity-alias="SelectSalesOder" name="Cust_Id" group-by="true">
+		</alias>	
+		<alias entity-alias="SelectSalesOder" name="So_Status" group-by="true" >
+		</alias>	
+		<alias entity-alias="SelectSalesOder" name="So_Date" group-by="true">
+		</alias>
+		<view-link rel-entity-alias="SelectSOPayment" entity-alias="SelectSalesOder">
+			<key-map field-name="So_Id" rel-field-name="So_Id"/>
+		</view-link>			
+	</view-entity>
+	<view-entity  entity-name="VE_Select_tbl_SalesReceipt_Customer"
+		package-name="org.ofbiz.ICEInc">
+		<member-entity entity-alias="SelectCustomer"
+			entity-name="tbl_Customer_Master"></member-entity>
+			
+		<member-entity entity-alias="SelectReceipt"
+			entity-name="tbl_Receipt_Details"></member-entity>
+							
+		
+		<alias-all entity-alias="SelectCustomer" >		
+		</alias-all>
+		<alias-all entity-alias="SelectReceipt" >		
+		</alias-all>		
+		
+		<view-link rel-entity-alias="SelectCustomer" entity-alias="SelectReceipt">
+			<key-map field-name="Cust_Id" rel-field-name="Cust_Id"/>
+		</view-link>		
+			
+	</view-entity>
+	<view-entity  entity-name="VE_Select_tbl_Receipt_SoPayment"
+		package-name="org.ofbiz.ICEInc">
+		<member-entity entity-alias="SelectSoPayment"
+			entity-name="tbl_SOPayment_Details"></member-entity>
+			
+		<member-entity entity-alias="SelectReceipt"
+			entity-name="tbl_Receipt_Details"></member-entity>
+							
+			<member-entity entity-alias="SelectSalesOrder"
+			entity-name="tbl_SalesOrder_Details"></member-entity>
+		<alias-all entity-alias="SelectSoPayment" >		
+		</alias-all>
+		<alias-all entity-alias="SelectReceipt" >		
+		</alias-all>		
+		<alias-all entity-alias="SelectSalesOrder" >		
+		</alias-all>	
+		<view-link rel-entity-alias="SelectSoPayment" entity-alias="SelectReceipt">
+			<key-map field-name="Receipt_Id" rel-field-name="Receipt_Id"/>
+		</view-link>		
+		<view-link rel-entity-alias="SelectSalesOrder" entity-alias="SelectSoPayment">
+			<key-map field-name="So_Id" rel-field-name="So_Id"/>
+		</view-link>
+	</view-entity>
+	<view-entity  entity-name="VE_Sum_SOPayment_ByCustomer"
+		package-name="org.ofbiz.ICEInc">
+		<member-entity entity-alias="SUMPayment"
+			entity-name="tbl_SOPayment_Details"></member-entity>
+		<member-entity entity-alias="SelectSalesOrder"
+			entity-name="tbl_SalesOrder_Details"></member-entity>		
+		<alias entity-alias="SUMPayment" name="SoPay_TotalAmt"
+			function="sum"></alias>
+		<alias entity-alias="SelectSalesOrder" name="Cust_Id" group-by="true">
+		</alias>
+		<alias entity-alias="SelectSalesOrder" name="So_Status" group-by="true">
+		</alias>
+		<view-link rel-entity-alias="SelectSalesOrder" entity-alias="SUMPayment">
+			<key-map field-name="So_Id" rel-field-name="So_Id"/>
+		</view-link>			
+	</view-entity>
+</entitymodel>

@@ -1,0 +1,32 @@
+<?page title="Incredible Browser"?><!-- sets browser window title -->
+
+<window title="Incredible Window"><!-- creates a window within body -->
+	  
+	  
+	<separator orient="horizontal" bar="true"/>
+	<tabbox>
+		<tabs>
+			<tab label="hi" />
+			<tab label="bye" />
+		</tabs>
+		<tabpanels>
+			<tabpanel>
+				<datebox />
+
+			</tabpanel>
+
+			<tabpanel></tabpanel>
+		</tabpanels>
+	</tabbox>
+<grid>
+		<columns>
+			<column label="My GRid"/>
+			<column label="Your Grid"/>
+		</columns>
+		<rows>
+			<row>	
+			<detail>My Details Here!</detail>
+			</row>
+		</rows>
+	</grid>
+</window>

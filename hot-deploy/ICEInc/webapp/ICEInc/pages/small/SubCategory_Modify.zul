@@ -1,0 +1,20 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="subcat2" title="Select the following Sub-Category to Modify"
+		border="normal">
+		<grid id="showSubCategory">
+			<columns>
+				<column label="Select" />
+				<column label="Sub-Category" />
+				<column label="Main Category" />
+			</columns>
+			<rows>
+				<row></row>
+			</rows>
+		</grid>
+		<hbox>
+			<button label="Edit" onClick="" />
+			<button label="Cancel" onClick="" />
+		</hbox>
+	</window>
+</zk>

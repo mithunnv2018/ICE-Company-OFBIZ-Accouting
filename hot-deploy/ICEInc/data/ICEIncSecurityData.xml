@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    <SecurityPermission description="View operations in the ICEInc Component." permissionId="ICEInc_VIEW"/>
+    <SecurityPermission description="Create operations in the ICEInc Component." permissionId="ICEInc_CREATE"/>
+    <SecurityPermission description="Update operations in the ICEInc Component." permissionId="ICEInc_UPDATE"/>
+    <SecurityPermission description="Delete operations in the ICEInc Component." permissionId="ICEInc_DELETE"/>
+    <SecurityPermission description="ALL operations in the ICEInc Component." permissionId="ICEInc_ADMIN"/>
+    <SecurityGroupPermission groupId="FULLADMIN" permissionId="ICEInc_ADMIN"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="ICEInc_CREATE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="ICEInc_DELETE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="ICEInc_UPDATE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="ICEInc_VIEW"/>
+    <SecurityGroupPermission groupId="VIEWADMIN" permissionId="ICEInc_VIEW"/>
+    <SecurityGroupPermission groupId="BIZADMIN" permissionId="ICEInc_ADMIN"/>
+</entity-engine-xml>

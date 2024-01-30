@@ -1,0 +1,74 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>
+<zk>
+	<zscript><![CDATA[
+	import java.util.*;
+	import org.ofbiz.ICEInc.Stock_Category;
+	Stock_Category b2 = new Stock_Category();
+	//ArrayList a = new ArrayList();
+
+	//a=b2.getMainCategory();
+]]></zscript>
+
+	<window id="StockCat1" title="Enter Stock Category"
+		apply="org.ofbiz.ICEInc.ZkCodeBehind.CB_StockCategory"
+		border="normal">
+		<vbox>
+			<hbox>
+				Stock Category Name:
+				<textbox id="txtStockCatName" />
+			</hbox>
+			<hbox>
+				Main Category :
+				<bandbox id="bdMainCatNew" readonly="true">
+					<bandpopup>
+						<panel>
+							<panelchildren>
+								<listbox
+									onSelect="bdMainCatNew.value=self.selectedItem.label;bdMainCatNew.close();"
+									id="lstMainCatStockCat" width="100px"
+									>
+									<listhead>
+										<listheader sort="auto" />
+									</listhead>
+								</listbox>
+							</panelchildren>
+						</panel>
+					</bandpopup>
+				</bandbox>
+
+			</hbox>
+			<hbox>
+				Sub-Category Name:
+				<bandbox id="bdSubCatNew" readonly="true">
+					<bandpopup>
+						<panel>
+							<panelchildren>
+								<listbox
+									onSelect="bdSubCatNew.value=self.selectedItem.label;bdSubCatNew.close();"
+									id="lstSubCatStockCat" width="100px"
+									>
+									<listhead>
+										<listheader sort="auto" />
+
+									</listhead>
+
+
+								</listbox>
+
+							</panelchildren>
+						</panel>
+					</bandpopup>
+				</bandbox>
+
+			</hbox>
+			<hbox>
+				<button id="btnSave" label="Save" />
+				<button id="btnCancel" label="Cancel" />
+
+			</hbox>
+		</vbox>
+
+	</window>
+
+</zk>

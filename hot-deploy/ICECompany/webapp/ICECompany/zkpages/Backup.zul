@@ -1,0 +1,16 @@
+<?page title="Backup DB" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Backup DB" border="normal" apply="org.ofbiz.ICE.ZkCodeBehind.CB_BACKUPRESTORE">
+<grid>
+		<columns>
+			<column label=""/>
+			<column label=""/>
+		</columns>
+		<rows>
+			<row>	
+			<button label="Backup data" id="btnBackupDB"/>
+			</row>
+		</rows>
+	</grid>
+</window>
+</zk>

@@ -1,0 +1,17 @@
+import org.ofbiz.party.contact.*;
+
+String partyId = request.getParameter("partyId");
+Map mechMap=new HashMap();
+ContactMechWorker.getContactMechAndRelated(request,partyId,mechMap);
+
+Map postalAddress=(Map)mechMap.get("postalAddress");
+if(postalAddress == null )
+	return "notMars";
+String planet=(String)postalAddress.get("planet");
+
+if(planet == null || !planet.equalsIgnoreCase("Mars"))
+	return "notMars";
+
+return "isMars";
+
+	

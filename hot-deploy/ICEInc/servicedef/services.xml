@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/services.xsd">
+    <description>ICEInc Services</description>
+    <vendor></vendor>
+    <version>1.0</version>
+
+	<!--<service name="MainCategoryService"  engine="java" location="org.ofbiz.ICEInc"
+	         invoke="PopulateMainCategory">
+	         <description>This helps populate a list box in gui.</description>
+	         <attribute name="mainCatMap" mode="OUT" type="java.util.Map"></attribute>
+	         </service>
+--></services>

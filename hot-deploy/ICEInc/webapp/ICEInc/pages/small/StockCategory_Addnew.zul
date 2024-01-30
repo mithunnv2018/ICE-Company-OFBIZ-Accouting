@@ -1,0 +1,68 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>
+<zk>
+<zscript><![CDATA[
+	import java.util.*;
+	import org.ofbiz.ICEInc.Stock_Category;
+	Stock_Category b2=new Stock_Category();
+	
+	//ArrayList a = new ArrayList();
+
+	//a=b2.getMainCategory();
+]]></zscript>
+
+	<window id="stckcat1" title="Enter Stock Category" apply="org.ofbiz.ICEInc.Stock_Category"
+		border="normal">
+		<vbox>
+			<hbox>
+				Stock Category Name:
+				<textbox id="txtStockCatName" />
+			</hbox>
+			<hbox>
+				Main Category :
+				<bandbox id="bd1" >
+					<bandpopup>
+						<panel>
+							<panelchildren>
+								<listbox 
+									onSelect="bd1.value=self.selectedItem.label;bd1.close();" 
+									id="lk_MainCatStockCat" width="100px" model="@{b2.mainCategory}">
+									<listhead>
+										<listheader sort="auto" />
+									</listhead>
+								</listbox>
+							</panelchildren>
+						</panel>
+					</bandpopup>
+				</bandbox>
+
+			</hbox>
+			<hbox>
+				Sub-Category Name:
+				<bandbox id="bd2">
+					<bandpopup>
+						<panel>
+							<panelchildren>
+								<listbox
+									onSelect="bd2.value=self.selectedItem.label;bd2.close();"
+									id="lk_SubCatStockCat" width="100px" model="@{b2.subCategory}" >
+									<listhead>
+										<listheader sort="auto" />
+
+									</listhead>
+
+
+								</listbox>
+
+							</panelchildren>
+						</panel>
+					</bandpopup>
+				</bandbox>
+				 
+			</hbox>
+
+		</vbox>
+
+	</window>
+
+</zk>

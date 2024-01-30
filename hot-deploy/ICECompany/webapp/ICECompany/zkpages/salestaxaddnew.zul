@@ -1,0 +1,45 @@
+<?page title="Add Sales Tax Details" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>
+<zk>
+	<window title="Add Sales Tax Details" border="normal"  
+	apply="org.ofbiz.ICE.ZkCodeBehind.CB_SalesTax"
+	>
+
+		<listbox id="lstsalestaxdetail" rows="5"
+			model="@{SalesTax.data2}">
+			<listhead>
+				<listheader label="Tax %" />
+				<listheader label="Date" />
+
+			</listhead>
+			<listitem self="@{each=person}">
+				<listcell label="@{person.St_Percentage}" />
+				<listcell label="@{person.st_Date}" />
+			</listitem>
+		</listbox>
+
+		<space bar="false" orient="horizontal" height="25px" />
+
+		<grid>
+			<columns>
+				<column label="" />
+				<column label="" />
+			</columns>
+			<rows>
+				<row>
+					Tax Percentage:
+					<textbox id="txttaxpercentage" />
+				</row>
+				<row>
+					Date:
+					<datebox id="datesalestaxdate" disabled="false"/>
+				</row>
+
+			</rows>
+		</grid>
+		<hbox>
+			<button id="btnSave" label="Save"  />
+			<button id="btnCancel" label="Cancel"  />
+		</hbox>
+	</window>
+</zk>

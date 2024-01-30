@@ -1,0 +1,207 @@
+<?page title="Main page" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="" border="normal">
+		<window id="winMainPage" mode="modal"
+			title="Select the Financial Year" border="normal"
+			apply="org.ofbiz.ICE.ZkCodeBehind.CB_MainPage">
+			<grid>
+				<columns>
+					<column label="" />
+					<column label="" />
+				</columns>
+				<rows>
+					<row>
+						Select the Financial Year:
+						<vbox>
+							<bandbox id="bdFinancialYear"
+								readonly="true">
+								<bandpopup>
+									<panel>
+										<panelchildren>
+											<listbox
+												onSelect="bdFinancialYear.value=self.selectedItem.label;bdFinancialYear.close();"
+												id="lstFinancialYear" width="100px">
+												<listhead>
+													<listheader
+														sort="auto" />
+												</listhead>
+											</listbox>
+										</panelchildren>
+									</panel>
+								</bandpopup>
+							</bandbox>
+							<button id="btOkFinancialYear" label="OK"
+								onClick="" />
+
+						</vbox>
+
+					</row>
+				</rows>
+			</grid>
+
+		</window>
+
+		<hbox>
+		
+		</hbox>
+		<grid>
+			<columns>
+				<column width="90%" label="" />
+				<column label="" />
+			</columns>
+			<rows>
+				<row>
+					<label value="BABIBAI ENTERPRISES - (Created by - Fast Tech Info.- 9870629927,9869972042)" />
+					<button label="Logout"
+						href="http://localhost:8080/ICECompany/control/logout" />
+				</row>
+			</rows>
+		</grid>
+		
+		<tabbox>
+			<tabs>
+				<tab label="Customer Details" />
+				<tab label="Sales Tax Master" />
+				<tab label="Sales Order Details" />
+				<tab label="Bags Details" />
+				<tab label="Receipt Details" />
+				<tab label="Report Details" />
+				<tab label="Backup" />
+				
+			</tabs>
+			<tabpanels>
+				<tabpanel id="tpcustomerdetails">
+					<tabbox>
+						<tabs>
+							<tab label="Add New" />
+							<tab label="Modify" />
+						</tabs>
+						<tabpanels>
+							<tabpanel>
+								<include id="iccustomerdetailadd"
+									src="/zkpages/customerdetailaddnew.zul" />
+							</tabpanel>
+							<tabpanel>
+								<include id="iccustomerdetailmodify"
+									src="/zkpages/customerdetailmodify.zul" />
+							</tabpanel>
+						</tabpanels>
+					</tabbox>
+				</tabpanel>
+
+
+				<tabpanel id="tpsalestaxmaster">
+					<tabbox>
+						<tabs>
+							<tab label="Sales Tax" />
+							<tab label="" />
+						</tabs>
+						<tabpanels>
+							<tabpanel>
+								<include id="icsalestaxaddnew"
+									src="/zkpages/salestaxaddnew.zul" />
+							</tabpanel>
+							<tabpanel></tabpanel>
+						</tabpanels>
+					</tabbox>
+				</tabpanel>
+
+
+				<tabpanel id="tpsalesorderdetail">
+					<tabbox>
+						<tabs>
+							<tab label="Add New" />
+							<tab label="Modify" />
+							<tab label="Modify Status"  />
+							
+						</tabs>
+						<tabpanels>
+							<tabpanel>
+								<include id="vvv"
+									src="/zkpages/salesorderdetailaddnew.zul" />
+							</tabpanel>
+							<tabpanel>
+								<include id="bbbbb"
+									src="/zkpages/salesorderdetailmodify.zul" />
+							</tabpanel>
+							<tabpanel>
+								<include id="bbxzzbbb"
+									src="/zkpages/salesorderdetailstatusmodify.zul" />
+							</tabpanel>
+						</tabpanels>
+					</tabbox>
+				</tabpanel>
+
+
+				<tabpanel id="tpbagsdetail">
+					<tabbox>
+						<tabs>
+							<tab label="Bags Return" />
+							<tab label="" />
+						</tabs>
+						<tabpanels>
+							<tabpanel>
+								<include id="ad"
+									src="/zkpages/bagdetails.zul" />
+							</tabpanel>
+							<tabpanel></tabpanel>
+						</tabpanels>
+					</tabbox>
+				</tabpanel>
+
+				<tabpanel id="tpreceiptdetail">
+					<tabbox>
+						<tabs>
+							<tab label="Add Receipt Details" />
+							<tab label="Modify Receipt Details" />
+						</tabs>
+						<tabpanels>
+							<tabpanel>
+								<include id="sss"
+									src="/zkpages/receiptdetails.zul" />
+							</tabpanel>
+							<tabpanel>
+								<include id="bbb"
+									src="/zkpages/receiptdetailsmodify.zul" />
+							</tabpanel>
+						</tabpanels>
+					</tabbox>
+				</tabpanel>
+
+				<tabpanel id="tpreportdetail">
+					<tabbox>
+						<tabs>
+							<tab label="Input Invoice  Details" />
+							<tab label="" />
+						</tabs>
+						<tabpanels>
+							<tabpanel>
+								<include id="rrr2"
+									src="/zkpages/reportsdetails.zul" />
+							</tabpanel>
+							<tabpanel></tabpanel>
+						</tabpanels>
+					</tabbox>
+				</tabpanel>
+				
+				<tabpanel id="tpbackup">
+					<tabbox>
+						<tabs>
+							<tab label="Data Backup " />
+							<tab label="" />
+						</tabs>
+						<tabpanels>
+							<tabpanel>
+								<include id="r3"
+									src="/zkpages/Backup.zul" />
+							</tabpanel>
+							<tabpanel></tabpanel>
+						</tabpanels>
+					</tabbox>
+				</tabpanel>
+				
+								
+			</tabpanels>
+		</tabbox>
+	</window>
+</zk>

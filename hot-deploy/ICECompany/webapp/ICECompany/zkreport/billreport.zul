@@ -1,0 +1,73 @@
+<?page title="Bill Report" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>
+<zk>
+	<window title="Bill Report" border="none" id="winbillreport"
+		width="1000px" apply="org.ofbiz.ICE.ZkCodeBehind.CB_ReportBill">
+		<window id="winshowdates" border="normal" mode="modal"
+			title="Bill Report Enter Information!" width="400px">
+			<grid>
+				<columns>
+					<column label="Select the dates" />
+					<column label="" />
+				</columns>
+				<rows>
+					<row>
+						From Date:
+						<datebox id="datefrom" />
+					</row>
+					<row>
+						To Date:
+						<datebox id="dateto" />
+					</row>
+				</rows>
+			</grid>
+			<vbox>
+				<button id="btnokreport" label="OK" width="80px" />
+			</vbox>
+		</window>
+
+		<listbox id="lstbillreport">
+			<listhead>
+				<listheader label="Sales Order No." sort="auto" />
+				<listheader label="Customer Name" sort="auto" />
+				<listheader label="Sales Qty" sort="auto" />
+				<listheader label="Bill Date" sort="auto"  />
+				<listheader label="Unit Total" sort="auto" />
+				<listheader label="Tax Percentage" sort="auto" />
+				<listheader label="Tax Amount" sort="auto" />
+				<listheader label="Adjustment" sort="auto" />
+				<listheader label="Total Amount" sort="auto" />
+				<listheader label="Status" sort="auto" />
+			</listhead>
+			<listitem self="@{each='person'}">
+				<listcell label="@{person.veSo_Nos}" />
+				<listcell label="@{person.veCust_Name}" />
+				<listcell label="@{person.veSo_Qty}" />
+				<listcell label="@{person.veSo_Date}" />
+				<listcell label="@{person.veSo_Amt}" />
+				<listcell label="@{person.veSo_TaxPer}" />
+				<listcell label="@{person.veSo_TaxAmt}" />
+				<listcell label="@{person.veSo_AmtAdjust}" />
+				<listcell label="@{person.veSo_TotalAmt}" />
+				<listcell label="@{person.veSo_Status}" />
+			</listitem>
+
+		</listbox>
+		<hbox width="100%" align="end" pack="end">
+
+			<hbox align="end" pack="end">
+				Total Quantity:
+
+				<label id="lblqty" value=" SOMENUMBER " />
+			</hbox>
+
+			<hbox align="end" pack="end">
+				Total Amt:
+
+				<label id="lbltotal" value=" SOMENUMBER " />
+			</hbox>
+
+		</hbox>
+
+	</window>
+</zk>

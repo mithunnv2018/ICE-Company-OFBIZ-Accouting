@@ -1,0 +1,38 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="subcat1" title="Sub Category" border="normal">
+		<hbox>
+			Enter Sub-Category:
+			<textbox />
+		</hbox>
+		<hbox>
+			Enter Main Category:
+			<bandbox id="bd">
+				<bandpopup>
+					<panel>
+						<panelchildren>
+							<listbox
+								onSelect="bd.value=self.selectedItem.label;bd.close();"
+								id="MainCategory" width="100px" model="@{a}">
+								<listhead>
+									<listheader sort="auto" />
+
+								</listhead>
+
+
+							</listbox>
+
+						</panelchildren>
+					</panel>
+				</bandpopup>
+			</bandbox>
+			
+		</hbox>
+
+		<hbox>
+			<button label="Save" onClick="" />
+			<button label="Cancel" onClick="" />
+		</hbox>
+	</window>
+
+</zk>

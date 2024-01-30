@@ -1,0 +1,61 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>
+<zk>
+
+	<window id="main2" title="Select the following Category to modify!"
+		border="normal"
+		apply="org.ofbiz.ICEInc.ZkCodeBehind.CB_MainCategory">
+		<zscript><![CDATA[
+	 
+]]></zscript>
+
+		<hbox>
+			<button id="btnrefresh" label="Refresh" />
+
+		</hbox>
+
+
+		<listbox id="lbmaincategorymodify" rows="10"
+			model="@{mysession2.data2}">
+			<listhead>
+				<listheader label="Name" visible="false" />
+				<listheader label="Main Category Name" />
+			</listhead>
+			<listitem self="@{each=person}">
+				<listcell label="@{person.MainCat_Id}" visible="false" />
+				<listcell label="@{person.MainCat_Name}" />
+			</listitem>
+		</listbox>
+		
+		<space bar="false" orient="horizontal" height="25px"/>
+		
+		<grid  width="300px" 
+			height="130px">
+			<columns>
+				<column label="Edit Main Category" />
+				
+			</columns>
+			<rows>
+				<row>
+				
+					<label value="Enter Main Category" /> 
+					
+					<textbox  id="txtMainCatModify" />
+					
+				</row>				
+				<row >
+				<hbox align="end">
+				<button label="Save" id="btnSaveModify" />
+				<button label="Cancel" id="btnCancelModify" />
+				</hbox>
+					
+					
+				</row>
+			</rows>
+		</grid>
+
+
+		
+		
+	</window>
+</zk>

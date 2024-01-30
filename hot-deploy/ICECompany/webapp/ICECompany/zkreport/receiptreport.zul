@@ -1,0 +1,53 @@
+<?page title="Bill Report" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>
+<zk>
+	<window title="Receipt Report" border="none" id="winreceiptreport" width="1000px" apply="org.ofbiz.ICE.ZkCodeBehind.CB_ReceiptReport" >
+		<window id="winreceiptshowdates" title="Receipt Report Enter Information!" border="normal" mode="modal" width="400px">
+			<grid>
+				<columns>
+					<column label="Select the dates" />
+					<column label="" />
+				</columns>
+				<rows>
+					<row>
+						From Date:
+						<datebox id="datefrom" />
+					</row>
+					<row>
+						To Date:
+						<datebox  id="dateto"/>
+					</row>
+				</rows>
+			</grid>
+			<vbox>
+				<button id="btnokreceiptreport" label="OK" width="80px" />
+			</vbox>
+		</window>
+
+		<listbox id="lstreceiptreport">
+			<listhead>
+				<listheader label="Receipt No." sort="auto" />
+				<listheader label="Customer Name" sort="auto" />
+				<listheader label="Receipt Date" sort="auto" />
+				<listheader label="Amount" sort="auto" />
+				<listheader label="Payment Type" sort="auto" />
+				<listheader label="Remarks" sort="auto" />
+			
+				 
+			</listhead>
+			<listitem self="@{each='person'}">
+				<listcell  label="@{person.Receipt_Nos}" />
+			    <listcell   label="@{person.Cust_Name}" />
+				<listcell   label="@{person.Receipt_Date}" />
+				<listcell  label="@{person.Receipt_Amt}" />
+				<listcell  label="@{person.Receipt_Paytype}" />
+				<listcell  label="@{person.Receipt_Remarks}" />
+				
+				
+			</listitem>
+			 
+		</listbox>
+
+
+	</window>
+</zk>

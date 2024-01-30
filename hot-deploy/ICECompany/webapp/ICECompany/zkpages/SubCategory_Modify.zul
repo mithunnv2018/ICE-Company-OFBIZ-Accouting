@@ -1,0 +1,78 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>
+<zk>
+	<window id="subcat2"
+		title="Select the following Sub-Category to Modify" border="normal"
+		apply="org.ofbiz.ICEInc.ZkCodeBehind.CB_SubCategory">
+		<zscript><![CDATA[
+	 
+]]></zscript>
+
+		<hbox>
+			<button id="btnrefresh" label="Refresh" />
+
+		</hbox>
+
+
+		<listbox id="lstSubcategorymodify" rows="10"
+			model="@{SubCat.data2}">
+			<listhead>
+				<listheader label="Sub Cat Id" visible="false" />
+				<listheader label="Sub Category Name" />
+				<listheader label="Main Cat Id" visible="false" />
+				<listheader label="Main Category Name" />
+			</listhead>
+			<listitem self="@{each=person}">
+				<listcell label="@{person.veSubCat_Id}" visible="false" />
+				<listcell label="@{person.veSubCat_Name}" />
+				<listcell label="@{person.veMainCat_Id}" visible="false" />
+				<listcell label="@{person.veMainCat_Name}" />
+			</listitem>
+		</listbox>
+
+		<space bar="false" orient="horizontal" height="25px" />
+
+		<grid width="300px" height="130px">
+			<columns>
+				<column label="Edit Sub Category" />
+
+			</columns>
+			<rows>
+				<row>
+					<label value="Enter Main Category" />
+
+					<textbox id="txtSubCatModify" />
+					
+				</row>
+				<row>
+				<label value="Select Sub Category" />
+					<bandbox id="bdModify" readonly="true">
+						<bandpopup>
+							<panel>
+								<panelchildren>
+									<listbox 
+										onSelect="bdModify.value=self.selectedItem.label;bdModify.close();"
+										id="lstMainCategoryModify"   width="100px">
+										<listhead>
+											<listheader sort="auto" />
+										</listhead>
+									</listbox>
+								</panelchildren>
+							</panel>
+						</bandpopup>
+					</bandbox>
+				</row>
+				<row>
+					<hbox align="end">
+						<button label="Save" id="btnSaveModify" />
+						<button label="Cancel" id="btnCancelModify" />
+						<label value="" id="message3" />
+					</hbox>
+
+
+				</row>
+			</rows>
+		</grid>
+
+	</window>
+</zk>

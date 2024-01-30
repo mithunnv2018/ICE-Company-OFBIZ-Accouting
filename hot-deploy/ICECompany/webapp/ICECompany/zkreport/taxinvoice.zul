@@ -1,0 +1,360 @@
+<?page title="TAX INVOICE" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>
+<zk>
+	<style>
+		div.z-grid-header123 { background-color:white;
+
+		} div.z-grid-body123 { background: white; border: 10px;
+		overflow: auto; width: 100%; } div.z-grid123 {background:
+		#ABCDE; border: 50px solid #7F9DB9; overflow: hidden; zoom: 1;}
+		.z-window-embedded-header1 { color:white; } .my2{ font-size:
+		20px}
+	</style>
+
+	<window id="wintaxinvoice" title="" border="none"
+		apply="org.ofbiz.ICE.ZkCodeBehind.CB_ReportInvoice" width="600px">
+
+
+		<window id="winquickinfo" title="Tax Invoice Enter Information!"
+			width="400px" mode="modal" border="normal" visible="true">
+
+			<grid>
+				<columns>
+					<column label="Quick Details" />
+					<column label="" />
+				</columns>
+				<rows>
+					<row>
+						Customer:
+						<hbox>
+							<bandbox id="bdCustNameReport"
+								readonly="true">
+								<bandpopup>
+									<panel>
+										<panelchildren>
+											<listbox
+												onSelect="bdCustNameReport.value=self.selectedItem.label;bdCustNameReport.close();"
+												id="lstCustNameReport" width="100px">
+												<listhead>
+													<listheader
+														sort="auto" />
+												</listhead>
+											</listbox>
+										</panelchildren>
+									</panel>
+								</bandpopup>
+							</bandbox>
+
+						</hbox>
+
+					</row>
+					<row>
+						Sales Order No.
+						<hbox>
+							<bandbox id="bdSalesOrderReport"
+								readonly="true">
+								<bandpopup>
+									<panel>
+										<panelchildren>
+											<listbox
+												onSelect="bdSalesOrderReport.value=self.selectedItem.label;bdSalesOrderReport.close();"
+												id="lstSalesOrderReport" width="100px">
+												<listhead>
+													<listheader
+														sort="auto" />
+												</listhead>
+											</listbox>
+										</panelchildren>
+									</panel>
+								</bandpopup>
+							</bandbox>
+
+						</hbox>
+					</row>
+				</rows>
+
+			</grid>
+			<hbox align="center">
+				<button id="btnokreport" label="OK" width="100px" />
+			</hbox>
+		</window>
+
+		<hbox width="100%" align="center" pack="center">
+
+			<label value="BABIBAI ENTERPRISE " zclass="my2" />
+		</hbox>
+		<hbox width="100%" align="center" pack="center">
+
+			<label
+				value="Raghukul Bldg, Gala No.1 , Ground Floor, Thane(E)-400603 " />
+		</hbox>
+		<hbox width="100%" align="end" pack="end">
+
+			<label value="Ph.No: 25982223" />
+		</hbox>
+		<separator bar="true" />
+
+		<hbox width="100%" align="center" pack="center">
+
+			<label value="TAX INVOICE" zclass="my2" />
+		</hbox>
+
+		<hbox width="100%" align="center" pack="end">
+
+			<hbox align="end" pack="end">
+				Bill No:
+				<label id="lblbillno" value=" SOMENUMBER2 " />
+
+			</hbox>
+
+		</hbox>
+		<hbox width="100%" align="center" pack="end">
+
+			<hbox align="end" pack="end">
+				Bill Date:
+				<label id="lblbilldate" value=" SOMEdate " />
+
+			</hbox>
+
+		</hbox>
+
+		<hbox width="100%" align="center" pack="end">
+
+			<hbox align="end" pack="end">
+				Tin No:
+				<label id="lblsalestax" value=" 2796071551V" />
+
+			</hbox>
+
+		</hbox>
+
+		<grid align="right" zclass="div.z-grid123" visible="false">
+			<columns>
+
+				<column label="  " width="20%" />
+				<column label="   " width="20%" align="right" />
+				<column width="80%" label="  " align="right" />
+
+			</columns>
+			<rows>
+				<row>
+					<label value="  " />
+					<label value="  " />
+					<label value=" Bill No: " />
+					<label id="lblbillno1" value=" SOMENUMBER " />
+
+				</row>
+				<row>
+					<label value="  " />
+					<label value="  " />
+					<label value=" Bill Date: " />
+					<label id="lblbilldate1" value=" SOMEdate " />
+
+				</row>
+				<row>
+					<label value="  " />
+					<label value="  " />
+					<label value=" Sales Tax: " />
+					<label id="lblsalestax1" value=" SOMEsalestax " />
+
+				</row>
+
+			</rows>
+		</grid>
+		<box orient="vertical" align="start">
+			<label value="To," />
+			<label id="lblname" value="SOMEMithn123" />
+			<label id="lbladdress" value="SOME ADDRESS"
+				multiline="true" />
+			<label id="lblphone" value="SOMEphone2322113"
+				multiline="true" />
+
+		</box>
+
+		<listbox id="lstitems">
+			<listhead>
+				<listheader width="7%" label="Sr. No." />
+				<listheader width="30%" label="Particulars" />
+				<listheader width="15%" label="Qty" />
+				<listheader width="15%" label="Unit Amt" />
+				<listheader width="15%" label="Amount" align="right" />
+
+			</listhead>
+			<listitem self="@{each='person'}">
+				<listcell label="@{person.srno}" />
+				<listcell label="@{person.particulars}" />
+				<listcell label="@{person.qty}" />
+				<listcell label="@{person.unitamt}" />
+				<listcell label="@{person.amt}" />
+			</listitem>
+		</listbox>
+
+		<hbox width="100%" align="center" pack="end">
+
+
+
+			<hbox align="end" pack="end">
+				Total:
+
+				<label id="lbltotal" value=" SOMENUMBER " />
+			</hbox>
+
+		</hbox>
+
+		<hbox width="100%" align="center" pack="end">
+
+
+			<hbox align="end" pack="end">
+				Tax %:
+
+				<label id="lbltaxpercentage" value=" SOMEtax% " />
+			</hbox>
+
+		</hbox>
+
+		<hbox width="100%" align="center" pack="end">
+
+			<hbox align="end" pack="end">
+				Tax Amount:
+				<label id="lbltaxamt" value=" SOMEtaxamt " />
+			</hbox>
+
+		</hbox>
+		<hbox width="100%" align="center" pack="end">
+
+			<hbox align="end" pack="end">
+				Inclusive of Tax:
+				<label id="lblinctax" value=" SOMEinclusivetax " />
+
+			</hbox>
+
+		</hbox>
+
+		<hbox width="100%" align="center" pack="end">
+
+			<hbox align="end" pack="end">
+				Adj./Disc.:
+				<label id="lbladjdiscount" value=" SOMEdisocunt " />
+
+			</hbox>
+
+		</hbox>
+
+		<hbox width="100%" align="center" pack="end">
+
+			<hbox align="end" pack="end">
+				Total Amount:
+				<label id="lbltotalamt" value=" SOMEtotalamount " />
+
+			</hbox>
+
+		</hbox>
+		<separator bar="false" height="10px" orient="horizontal" visible="true"></separator>
+		
+		  <hbox width="100%" align="center" pack="end">
+
+			<hbox align="end" pack="end">
+				Other O/S:
+				<label id="lblOtherOS" value=" SOMEtotalamount " />
+
+			</hbox>
+
+		</hbox>
+		
+	   <hbox width="100%" align="center" pack="end">
+
+			<hbox align="end" pack="end">
+				Total O/S:
+				<label id="lblTotalOS" value=" SOMEtotalamount " />
+
+			</hbox>
+
+		</hbox>
+
+
+		<grid align="right" visible="false">
+			<columns>
+				<column label="  " width="20%" />
+				<column label="  " width="50%" />
+				<column label="   " width="90%" align="center" />
+				<column width="80%" label="  " align="right" />
+
+			</columns>
+			<rows>
+				<row>
+					<label value="  " />
+					<label value="  " />
+					<label value=" Total: " />
+					<label id="lbltotal2" value=" SOMENUMBER " />
+
+				</row>
+				<row>
+					<label value="  " />
+					<label value="  " />
+					<label value=" Tax %: " />
+					<label id="lbltaxpercentage2" value=" SOMEtax% " />
+
+				</row>
+				<row>
+					<label value="  " />
+					<label value="  " />
+					<label value=" Tax AMount: " />
+					<label id="lbltaxamt2" value=" SOMEtaxamt " />
+
+				</row>
+				<row>
+					<label value="  " />
+					<label value="  " />
+					<label value=" Inclusive of Tax: " />
+					<label id="lblinctax2" value=" SOMEinclusivetax " />
+
+				</row>
+				<row>
+					<label value="  " />
+					<label value="  " />
+					<label value=" Adj./Disc.: " />
+					<label id="lbladjdiscount2" value=" SOMEdisocunt " />
+
+				</row>
+				<row>
+					<label value="  " />
+					<label value="  " />
+					<label value=" Total AMount: " />
+					<label id="lbltotalamt2" value=" SOMEtotalamount " />
+
+				</row>
+				<row>
+					<label value="  " />
+					<label value="  " />
+					<label value="  " />
+					<label id="lbltotalamt2vbn" value=" " />
+
+				</row>
+				<row>
+					<label value="  " />
+					<label value="  " />
+					<label value=" Total AMount: " />
+					<label id="lblTotalOSd" value="" />
+
+				</row>
+			</rows>
+		</grid>
+		<separator height="10" />
+		<hbox width="100%" align="start" pack="start">
+
+			<hbox align="start" pack="start">
+				Note: 
+				<vbox>
+					<label value="* Prices inclusive of all taxes. " />
+					<label
+						value="* Stock once sold will not be taken back. " />
+					<label
+						value="* Check your stock before leaving the premises. " />
+							
+				</vbox>
+			</hbox>
+
+		</hbox>
+
+	</window>
+</zk>

@@ -1,0 +1,48 @@
+<?page title="Enter Report Detail" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Enter Report Detail" border="normal">
+<vbox>
+Click below to open Invoice Reporting Window.
+<html><![CDATA[ 
+<INPUT type="button" value="Open Invoice Report Window!" onClick="window.open('http://localhost:8080/ICECompany/control/invoicereport','mywindow','toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,copyhistory=yes,resizable=yes')">
+               ]]></html>
+ </vbox>
+ 
+ <vbox>
+Click below to open Invoice Without TIN NO. Window.
+<html><![CDATA[ 
+<INPUT type="button" value="Open Invoice Without TIN No Window!" onClick="window.open('http://localhost:8080/ICECompany/control/invoicereportWithoutTin','mywindow','toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,copyhistory=yes,resizable=yes')">
+               ]]></html>
+ </vbox>
+ <vbox>
+Click below to open Bill Reporting Window.
+<html><![CDATA[ 
+<INPUT type="button" value="Open Bill Report Window!" onClick="window.open('http://localhost:8080/ICECompany/control/billreport','mywindow2','toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,copyhistory=yes,resizable=yes')">
+               ]]></html>
+ </vbox>
+ 
+ <vbox>
+Click below to open Receipt Only Window.
+<html><![CDATA[ 
+<INPUT type="button" value="Open Receipt Window!" onClick="window.open('http://localhost:8080/ICECompany/control/receiptonly','mywindow3','toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,copyhistory=yes,resizable=yes')">
+               ]]></html>
+ </vbox>
+
+
+ <vbox>
+Click below to open Receipt Report Window.
+<html><![CDATA[ 
+<INPUT type="button" value="Open Receipt Report Window!" onClick="window.open('http://localhost:8080/ICECompany/control/receiptreport','mywindow4','toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,copyhistory=yes,resizable=yes')">
+               ]]></html>
+ </vbox>
+ 
+ 
+ <vbox>
+Click below to open Duplicate Bill 
+<html><![CDATA[ 
+<INPUT type="button" value="Open Duplicate Bill Window!" onClick="window.open('http://localhost:8080/ICECompany/control/invoicereportduplicate','mywindow5','toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,copyhistory=yes,resizable=yes')">
+               ]]></html>
+ </vbox>
+     
+</window>
+</zk>

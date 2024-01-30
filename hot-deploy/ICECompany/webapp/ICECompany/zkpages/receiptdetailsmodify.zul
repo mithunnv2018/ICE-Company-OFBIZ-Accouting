@@ -1,0 +1,120 @@
+<?page title="Receipt Details" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>
+<zk>
+	<window title="Modify Receipt Details" border="normal" id="ReceiptModify" apply="org.ofbiz.ICE.ZkCodeBehind.CB_ReceiptModify">
+		<button label="Refresh" id="btnGridRefresh" />
+		<listbox id="lstReceiptmodify" model="@{ReceiptModify.data2}">
+			<listhead>
+			<listheader label="Receipt Id" sort="auto" visible="false"/>
+				<listheader label="Receipt No." sort="auto" />
+				<listheader label="Customer" sort="auto" />
+				<listheader label="Amount" sort="auto" />
+				<listheader label="Receipt Date" sort="auto" />
+			</listhead>
+			<listitem self="@{each='person'}">
+					<listcell label="@{person.Receipt_Id}" visible="false"/>		
+				<listcell label="@{person.Receipt_Nos}" />
+				<listcell label="@{person.Cust_Name}" />
+				<listcell label="@{person.Receipt_Amt}"/>
+				<listcell label="@{person.Receipt_Date}"/>
+			</listitem>
+		</listbox>
+
+		<grid>
+			<columns>
+				<column label="" />
+				<column label="" />
+			</columns>
+			<rows>
+				<row>
+					Receipt No.:
+					<textbox id="txtReceiptNo" disabled="true"/>
+				</row>
+				<row>
+					Receipt Date:
+					<datebox id="dateReceipt" format="MMM d, yyyy"/>
+				</row>
+				<row>
+					Customer Name:
+					<textbox id="txtCustomer" disabled="true"/>
+				</row>
+
+			</rows>
+		</grid>
+	
+		<listbox id="lstSalesOrder" >
+			<listhead>
+				
+				<listheader label="SalesOrder No." sort="auto" />				
+				<listheader label="Amount" sort="auto" />
+				
+			</listhead>
+			<listitem self="@{each='person'}">				
+				<listcell label="@{person.So_Nos}" />
+				<listcell label="@{person.SoPay_TotalAmt}" />
+				
+			</listitem>
+		</listbox>
+
+
+		<grid>
+			<columns>
+				<column label="" />
+				<column label="" />
+			</columns>
+			<rows>
+			
+				<row>
+					Paid Amount:
+					<textbox id="txtPaidamt" disabled="true" />
+				</row>
+				<row>
+					Payment Type:
+					<bandbox id="bdPaymenttype" readonly="true">
+						<bandpopup>
+								<panel>
+									<panelchildren>
+										<listbox
+											onSelect="bdPaymenttype.value=self.selectedItem.label;bdPaymenttype.close();"
+											id="lstpaymenttype" width="100px" >
+											<listhead>
+												<listheader sort="auto" />
+											</listhead>
+										</listbox>
+									</panelchildren>
+								</panel>
+							</bandpopup>
+						</bandbox>
+				</row>
+				<row>
+					Remarks:
+					<textbox id="txtRemarks" />
+				</row>
+				<row>
+					Status:
+					<bandbox id="bdStatus"
+							readonly="true">
+							<bandpopup>
+								<panel>
+									<panelchildren>
+										<listbox
+											onSelect="bdStatus.value=self.selectedItem.label;bdStatus.close();"
+											id="lstStatus" width="100px">
+											<listhead>
+												<listheader sort="auto" />
+											</listhead>
+										</listbox>
+									</panelchildren>
+								</panel>
+							</bandpopup>
+						</bandbox>
+				</row>
+
+			</rows>
+		</grid>
+		<hbox>
+			<button id="btnSave" label="Save" />
+			<button id="btnCancel" label="Cancel" />
+		</hbox>
+	</window>
+</zk>

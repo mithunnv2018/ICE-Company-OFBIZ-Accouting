@@ -1,0 +1,74 @@
+<?page title="Bags Details" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>
+
+<zk>
+	<window title="Bags Details" border="normal" apply="org.ofbiz.ICE.ZkCodeBehind.CB_BagDetails">
+
+		<grid>
+			<columns>
+				<column label="Bag details" />
+				<column label="" />
+			</columns>
+			<rows>
+				<row>
+					Customer:
+					<hbox>
+						<bandbox id="bdCustomer">
+							<bandpopup>
+								<panel>
+									<panelchildren>
+										<listbox
+											onSelect="bdCustomer.value=self.selectedItem.label;bdCustomer.close();"
+											id="lstCustomer" width="100px" >
+											<listhead>
+												<listheader sort="auto" />
+											</listhead>
+										</listbox>
+									</panelchildren>
+								</panel>
+							</bandpopup>
+						</bandbox>
+
+					</hbox>
+
+				</row>
+			</rows>
+
+		</grid>
+
+		<listbox id="lstSalesBagDetails" checkmark="true"
+			multiple="false">
+			<listhead>
+			<listheader label="So_Id" sort="auto" visible="false" />
+				<listheader label="Sales Order No." sort="auto" />
+				<listheader label="Bags" sort="auto" />				
+			</listhead>
+			<listitem self="@{each='person'}">
+				<listcell label="@{person.So_Id}" />
+				<listcell label="@{person.So_Nos}" />
+				<listcell label="@{person.MaxBags}" />
+			</listitem>
+		</listbox>
+
+		<grid>
+			<columns>
+				<column label="" />
+				<column label="" />
+			</columns>
+			<rows>
+				<row>
+				Returned Bags:<textbox id="txtreturnedbags"/>
+				</row>
+				<row>
+				Date: <datebox id="datereturned" />
+				</row>
+			</rows>
+			
+		</grid>
+		<hbox>
+		<button id="btnSave" label="Save"/>
+		<button id="btnCancel" label="Cancel"/>
+		
+		</hbox>
+	</window>
+</zk>

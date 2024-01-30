@@ -1,0 +1,38 @@
+<?page title="Add new customer details" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Add new customer details" border="normal" apply="org.ofbiz.ICE.ZkCodeBehind.CB_CustomerDetails">
+<grid>
+		<columns>
+			<column width="20%" label=""/>
+			<column label="" width="70%"/>
+		</columns>
+		<rows >
+			<row>	
+			Customer Name:<textbox id="txtcustomername"/>
+			</row>
+			<row>	
+			Customer Address:<textbox id="txtcustomeraddress" multiline="true"/>
+			</row>
+			<row align="left">	
+			City:<textbox id="txtcity"/>
+			</row>
+			<row>	
+			Postal Code:<textbox id="txtpostalcode"/>
+			</row>
+			<row>	
+			Phone No.:<textbox id="txtphone"/>
+			</row>
+			<row>	
+			Email ID:<textbox id="txtemail"/>
+			</row>
+		</rows>
+		
+	</grid>
+	<hbox>
+	<button id="btnSave" label="Save" onClick="" />
+	<button id="btnCancel" label="Cancel" onClick="" />
+	
+	
+	</hbox>
+</window>
+</zk>

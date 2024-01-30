@@ -1,0 +1,71 @@
+<?page title="Sales Order Details Modify" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>
+<zk>
+	<window title="Sales Order Details Status Modify" border="normal"
+		id="SalesOrderStatusModify"
+		apply="org.ofbiz.ICE.ZkCodeBehind.CB_SalesOrderStatusModify">
+
+		<button label="Refresh" id="btnGridRefresh" />
+		<listbox id="lstSalesOrderStatusModify"  
+			model="@{SalesOrderStatusModify.data2}" checkmark="true" multiple="true" >
+			<listhead >
+				
+				<listheader label="Sales Order No." />
+				<listheader label="Customer Name" />
+				<listheader label="Sales Date" />
+				<listheader label="Amount" />
+				<listheader label="Status" />
+				<listheader label="So_Id" visible="false" />
+			</listhead>
+			<listitem self="@{each='person'}">
+				
+				<listcell label="@{person.veSo_Nos}" />
+				<listcell label="@{person.veCust_Name}" />
+				<listcell label="@{person.veSo_Date}" />
+				<listcell label="@{person.veSo_TotalAmt}" />
+				<listcell label="@{person.veSo_Status}" />
+				<listcell label="@{person.veSo_Id}" visible="false" />
+			</listitem>
+		</listbox>
+
+		<space bar="false" orient="horizontal" height="25px" />
+
+		<grid>
+			<columns>
+				<column label="Add new details" />
+				<column label="" />
+			</columns>
+			<rows>
+
+				<row>
+					Status:
+					<hbox>
+						<bandbox id="bdStatus" readonly="true">
+							<bandpopup>
+								<panel>
+									<panelchildren>
+										<listbox
+											onSelect="bdStatus.value=self.selectedItem.label;bdStatus.close();"
+											id="lstStatus" width="100px">
+											<listhead>
+												<listheader sort="auto" />
+											</listhead>
+										</listbox>
+									</panelchildren>
+								</panel>
+							</bandpopup>
+						</bandbox>
+
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+ 
+		<hbox>
+			<button id="btnSave" label="Save" />
+			<button id="btnCancel" label="Cancel" />
+		</hbox>
+
+
+	</window>
+</zk>

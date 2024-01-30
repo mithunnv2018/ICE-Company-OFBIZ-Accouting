@@ -1,0 +1,13 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="new page title" border="normal">
+New Content Here!
+
+<html><![CDATA[
+               <h1>Life is good?</h1>
+               <FORM>
+<INPUT type="button" value="Open New Window!" onClick="window.open('http://localhost:8080/ICEInc/control/report','mywindow','toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,copyhistory=yes,	resizable=yes')">        
+               </FORM>
+               ]]></html>
+</window>
+</zk>

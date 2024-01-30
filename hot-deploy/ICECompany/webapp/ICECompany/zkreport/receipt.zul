@@ -1,0 +1,155 @@
+<?page title="RECEIPT " contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>
+<zk>
+	<window id="winreceiptonly" title="" border="none"
+		apply="org.ofbiz.ICE.ZkCodeBehind.CB_BillOnly" width="700px">
+		<window id="winquickreceiptinfo"
+			title="Receipt Enter Information!" width="400px" mode="modal"
+			border="normal" visible="true">
+
+			<grid>
+				<columns>
+					<column label="Quick Details" />
+					<column label="" />
+				</columns>
+				<rows>
+					<row>
+						Customer:
+						<hbox>
+							<bandbox id="bdCustNameReceipt"
+								readonly="true">
+								<bandpopup>
+									<panel>
+										<panelchildren>
+											<listbox
+												onSelect="bdCustNameReceipt.value=self.selectedItem.label;bdCustNameReceipt.close();"
+												id="lstCustNameReceipt" width="100px">
+												<listhead>
+													<listheader
+														sort="auto" />
+												</listhead>
+											</listbox>
+										</panelchildren>
+									</panel>
+								</bandpopup>
+							</bandbox>
+
+						</hbox>
+
+					</row>
+					<row>
+						Receipt No.
+						<hbox>
+							<bandbox id="bdReceiptNo" readonly="true">
+								<bandpopup>
+									<panel>
+										<panelchildren>
+											<listbox
+												onSelect="bdReceiptNo.value=self.selectedItem.label;bdReceiptNo.close();"
+												id="lstReceiptNo" width="100px">
+												<listhead>
+													<listheader
+														sort="auto" />
+												</listhead>
+											</listbox>
+										</panelchildren>
+									</panel>
+								</bandpopup>
+							</bandbox>
+
+						</hbox>
+					</row>
+				</rows>
+
+			</grid>
+			<hbox align="center">
+				<button id="btnokreceipt" label="OK" width="100px" />
+			</hbox>
+		</window>
+
+		<hbox width="100%" align="center" pack="center">
+
+			<label value="BABIBAI ENTERPRISE " zclass="my2" />
+		</hbox>
+		<hbox width="100%" align="center" pack="center">
+
+			<label
+				value="Raghukul Bldg, Gala No.1 , Ground Floor, Thane(E)-400603 " />
+		</hbox>
+		<hbox width="100%" align="end" pack="end">
+
+			<label value="Ph.No: 25982223" />
+		</hbox>
+		<separator bar="true" />
+
+
+		<hbox width="100%" align="center" pack="center">
+
+			<label value="RECEIPT" zclass="my2" />
+		</hbox>
+
+
+		<grid align="right">
+			<columns>
+
+				<column label="  " width="30%" align="left" />
+				<column label="   " width="50%" align="left" />
+				<column width="50%" label="  " align="right" />
+				<column width="30%" label="  " align="right" />
+
+			</columns>
+			<rows>
+				<row>
+					<label value="  " />
+					<label value="  " />
+					<label value=" Receipt No: " />
+					<label id="lblreceiptno" value=" SOMENUMBER " />
+
+				</row>
+				<row>
+					<label value="  " />
+					<label value="  " />
+					<label value=" Receipt Date: " />
+					<label id="lblreceiptdate" value=" SOMEdate " />
+
+				</row>
+				<row>
+					<label value=" Received From: " />
+					<label id="lblcustomername" value=" SOMECustomer " />
+					<label value=" " />
+					<label value=" " />
+
+				</row>
+				<row>
+					<label value=" Amount: " />
+					<label id="lblamount" value=" SOMEAmount " />
+					<label value=" " />
+					<label value=" " />
+
+				</row>
+				<row>
+					<label value="Payment Type: " />
+					<label id="lblpaymenttype"
+						value=" SOMEPaymenttype " />
+					<label value=" " />
+					<label value=" " />
+
+				</row>
+				<row>
+					<label value="Amount in words: " />
+					<label id="lblamountinwords"
+						value=" SOMEamountinwords" />
+					<label value=" " />
+					<label value=" " />
+
+				</row>
+
+
+			</rows>
+		</grid>
+
+
+		<separator bar="true" height="10" />
+
+	</window>
+</zk>

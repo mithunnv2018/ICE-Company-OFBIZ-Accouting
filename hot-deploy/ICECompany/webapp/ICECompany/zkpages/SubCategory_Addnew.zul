@@ -1,0 +1,35 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>
+<zk>
+	<window id="subcat1" title="Sub Category" border="normal" apply="org.ofbiz.ICEInc.ZkCodeBehind.CB_SubCategory">
+		<hbox>
+			Enter Sub-Category:
+			<textbox id="txtSubCategory"/>
+		</hbox>
+		<hbox>
+			Select Main Category:
+			<bandbox id="bdNew" readonly="true">
+				<bandpopup>
+					<panel>
+						<panelchildren>
+							<listbox
+								onSelect="bdNew.value=self.selectedItem.label;bdNew.close();"
+								id="lstMainCategory" width="100px" >
+								<listhead>
+									<listheader sort="auto" />
+								</listhead>
+							</listbox>
+						</panelchildren>
+					</panel>
+				</bandpopup>
+			</bandbox>
+			
+		</hbox>
+
+		<hbox>
+			<button label="Save" id="btnSave" />
+			<button label="Cancel" id="btnCancel"  />
+		</hbox>
+	</window>
+
+</zk>

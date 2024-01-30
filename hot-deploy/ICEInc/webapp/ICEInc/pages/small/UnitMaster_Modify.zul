@@ -1,0 +1,18 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="unitmaster2" title="Select the follwoing Unit Master" border="normal">
+		<grid>
+			<columns>
+				<column label="Select" />
+				<column label="Unit Master" />
+			</columns>
+			<rows>
+				<row></row>
+			</rows>
+		</grid>
+		<hbox>
+			<button label="Edit" onClick="" />
+			<button label="Cancel" onClick="" />
+		</hbox>
+	</window>
+</zk>

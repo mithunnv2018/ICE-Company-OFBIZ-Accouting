@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofbiz-component name="practice"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/ofbiz-component.xsd">
+	<resource-loader name="main" type="component" />
+	<classpath type="dir" location="config" />
+	<classpath type="dir" location="script" />
+	<classpath type="jar" location="build/lib/*" />
+	 <entity-resource type="data" reader-name="demo" loader="main" location="data/PracticeData.xml"/>
+	 
+	<entity-resource loader="main" location="entitydef/eecas.xml" reader-name="main" type="eca"/>
+	<service-resource type="model" loader="main"
+		location="servicedef/services.xml" />
+	<service-resource type="eca" loader="main"
+		location="servicedef/secas.xml" />
+   
+	<webapp name="practice" title="Practice" server="default-server"
+		base-permission="OFBTOOLS" location="webapp/practice" mount-point="/practice"
+		app-bar-display="true" />
+</ofbiz-component>

@@ -1,0 +1,159 @@
+<?page title="Sales Order Details Add" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>
+<zk>
+	<window title="Sales Order Details Add" border="normal"
+		id="SalesOrderNew" apply="org.ofbiz.ICE.ZkCodeBehind.CB_SalesOrder">
+		<grid>
+			<columns>
+				<column label="Add new details" />
+				<column label="" />
+			</columns>
+			<rows>
+				<row>
+					Sales Order No.:
+					<textbox id="txtsalesordernoaddnew" disabled="true"/>
+				</row>
+				<row>
+					Customer Name:
+
+					<hbox>
+						<bandbox id="bdCustNameAddnew" readonly="true">
+							<bandpopup>
+								<panel>
+									<panelchildren>
+										<listbox
+											onSelect="bdCustNameAddnew.value=self.selectedItem.label;bdCustNameAddnew.close();"
+											id="lstCustNameAddnew" width="100px" >
+											<listhead>
+												<listheader sort="auto" />
+											</listhead>
+										</listbox>
+									</panelchildren>
+								</panel>
+							</bandpopup>
+						</bandbox>
+<button label="Refresh" id="btnRefreshCust" />
+					</hbox>
+
+				</row>
+				<row>
+					Sales Date:
+					<datebox id="dateSalesDateAddnew" format=""/>
+				</row>
+
+			</rows>
+		</grid>
+
+
+
+		<grid>
+			<columns>
+				<column label="Sales Order Items" />
+				<column label="" />
+			</columns>
+			<rows>
+				<row>
+					Items:
+					<textbox id="txtItemAddnew" disabled="true" value="ICE"/>
+				</row>
+				<row>
+					Quantity:
+					<textbox id="txtQuantityAddnew" />
+				</row>
+				<row>
+					Unit Amount:
+					<textbox id="txtUnitAmtAddnew" />
+				</row>
+				<row>
+					<button id="btnSoItemAdd" label="Add"
+						onClick="" />
+				</row>
+			</rows>
+		</grid>
+
+
+		<listbox id="lstSoItemsAddnew" 
+			checkmark="true" multiple="false" model="@{BagDetails.data2}">
+			<listhead>
+				<listheader label="Items" sort="auto" />
+				<listheader label="Quantity" sort="auto" />
+				<listheader label="Amount" sort="auto" />
+			</listhead>
+			<listitem self="@{each='person'}">
+				<listcell label="@{person.items}" />
+				<listcell label="@{person.qty}" />
+				<listcell label="@{person.unit}" />
+
+			</listitem>
+		</listbox>
+
+		<hbox>
+			<button label="Delete" id="btnDelete" />
+			<button label="Calculate" id="btnCalculate" />
+		</hbox>
+
+		<grid>
+			<columns>
+				<column label="" />
+				<column label="" />
+			</columns>
+			<rows>
+				<row>
+					Amount:
+					<textbox id="txtAmountAddnew" disabled="true"/>
+				</row>
+				<row>
+					VAT Percentage:
+					<hbox>
+						<bandbox id="bdVatPerAddnew" readonly="true" value="--Select--">
+							<bandpopup>
+								<panel>
+									<panelchildren>
+										<listbox
+											onSelect="bdVatPerAddnew.value=self.selectedItem.label;bdVatPerAddnew.close();"
+											id="lstVatPerAddnew" width="100px" >
+											<listhead>
+												<listheader sort="auto" />
+											</listhead>
+										</listbox>
+									</panelchildren>
+								</panel>
+							</bandpopup>
+						</bandbox>
+
+			<button label="Refresh" id="btnRefreshVat" />
+			
+		
+					</hbox>
+
+				</row>
+				<row>
+					Tax Amount:
+					<textbox id="txtTaxAmtAddnew" disabled="true"/>
+				</row>
+				<row>
+					Inclusive of Tax Amount:
+					<textbox id="txtIncTaxAmt" disabled="true"/>
+				</row>
+				
+				<row>
+					Adjustment/Discount:
+					<textbox id="txtDiscAddnew" />
+				</row>
+				<row>
+					Total Amount:
+					<textbox id="txtTotalAmtAddnew" />
+				</row>
+				<row>
+					Remarks:
+					<textbox id="txtRemarksAddnew" />
+				</row>
+			</rows>
+		</grid>
+		<hbox>
+			<button id="btnSave" label="Save"   />
+			<button id="btnCancel" label="Cancel"   />
+		</hbox>
+
+	</window>
+</zk>

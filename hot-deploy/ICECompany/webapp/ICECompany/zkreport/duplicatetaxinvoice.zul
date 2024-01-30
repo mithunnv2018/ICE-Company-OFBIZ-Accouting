@@ -1,0 +1,21 @@
+<?page title="Duplicate Invoice" contentType="text/html;charset=UTF-8"?>
+<zk>
+<style>
+		div.z-grid-header123 { background-color:white;
+
+		} div.z-grid-body123 { background: white; border: 10px;
+		overflow: auto; width: 100%; } div.z-grid123 {background:
+		#ABCDE; border: 50px solid #7F9DB9; overflow: hidden; zoom: 1;}
+		.z-window-embedded-header1 { color:white; } .my2{ font-size:
+		20px}
+	</style>
+<window title="" border="none">
+<hbox width="50%"  align="center" pack="center">
+<label value="DUPLICATE INVOICE"/>
+</hbox>
+<include src="/zkreport/taxinvoice.zul"/>
+
+
+
+</window>
+</zk>

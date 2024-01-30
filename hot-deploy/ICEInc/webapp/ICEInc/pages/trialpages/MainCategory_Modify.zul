@@ -1,0 +1,66 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+
+<zk>
+
+	<window id="main2" title="Select the following Category to modify!"
+		border="normal"
+		apply="org.ofbiz.ICEInc.ZkCodeBehind.CB_MainCategory">
+		<zscript><![CDATA[
+	import org.zkoss.zul.SimpleListModel;
+	org.ofbiz.ICEInc.ZkCodeBehind.CB_MainCategory abean = new org.ofbiz.ICEInc.ZkCodeBehind.CB_MainCategory();
+	public void dorefresh() {
+		alert("HI");
+		//abean = new org.ofbiz.ICEInc.ZkCodeBehind.CB_MainCategory();
+		java.io.StringWriter sw=new java.io.StringWriter();
+		main2.redraw(sw);
+		
+		
+		
+		//showmaincategory.setModel(new SimpleListModel(abean.getMainCategoryTable()));
+
+	}
+]]></zscript>
+		<window title="hi" border="normal">
+			<button label="clickMe" onClick="dorefresh()" />
+		</window>
+		<grid id="showmaincategory" width="30">
+			<columns>
+
+				<column label="Right" />
+
+			</columns>
+			<rows>
+				<row forEach="${abean.mainCategoryTable}">
+
+					<label value="${each.MainCat_Id}"
+						onClick="alert(self.getValue())" />
+					<label value="${each.MainCat_Name}" visible="true" />
+
+
+				</row>
+			</rows>
+		</grid>
+		
+		<grid id="showmaincategory" width="30">
+			<columns>
+
+				<column label="Right" />
+
+			</columns>
+			<rows>
+				<row model="${mysession2.data2}">
+
+					<label value="${each.MainCat_Id}"
+						onClick="alert(self.getValue())" />
+					<label value="${each.MainCat_Name}" visible="true" />
+
+
+				</row>
+			</rows>
+		</grid>
+		<hbox>
+			<button label="Edit" onClick="" />
+			<button label="Cancel" onClick="" />
+		</hbox>
+	</window>
+</zk>

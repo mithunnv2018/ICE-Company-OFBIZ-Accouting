@@ -1,0 +1,79 @@
+<?page title="Modify customer details" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>
+<zk>
+	<window title="Modify customer details" border="normal" id="ModifyCust"
+		apply="org.ofbiz.ICE.ZkCodeBehind.CB_CustomerDetails">
+
+		<hbox>
+			<button id="btnrefresh" label="Refresh" />
+
+		</hbox>
+		<listbox id="lstcustomerdetailmodify" rows="10"
+			model="@{CustomerMaster.data2}">
+			<listhead>
+				<listheader label="Id" visible="false"/>
+				<listheader label="Name" />
+				<listheader label="City" />
+				<listheader label="Phone No." />
+				<listheader label="Email ID" />
+			</listhead>
+			<listitem self="@{each=person}">
+			    <listcell label="@{person.veCust_Id}" visible="false" />
+				<listcell label="@{person.veCust_Name}" />
+				<listcell label="@{person.veCust_City}" />
+				<listcell label="@{person.veCust_PhNo}" />
+				<listcell label="@{person.veCust_EmailId}" />
+			</listitem>
+		</listbox>
+
+		<space bar="false" orient="horizontal" height="25px" />
+
+
+		<grid height="250px">
+			<columns>
+				<column label="Edit Customer Details" width="20%" />
+				<column label="Edit Customer Details" width="90%" />
+
+			</columns>
+			<rows>
+				<row>
+					<label value="Enter Name:" />
+					<textbox id="txtmodifycustomername" />
+				</row>
+				<row>
+					<label value="Enter Address" />
+					<textbox id="txtmodifyaddress" multiline="true" />
+				</row>
+
+				<row>
+					<label value="Enter City" />
+					<textbox id="txtmodifycity" />
+				</row>
+				<row>
+					<label value="Enter Postal Code:" />
+					<textbox id="txtmodifypostalCode" />
+				</row>
+				<row>
+					<label value="Enter Phone:" />
+					<textbox id="txtmodifyphone" />
+				</row>
+				<row>
+					<label value="Enter Email ID:" />
+					<textbox id="txtmodifyemail" />
+				</row>
+
+
+				<row>
+					<hbox align="end">
+						<button label="Save" id="btnSaveModify" />
+						<button label="Cancel" id="btnCancelModify" />
+					</hbox>
+
+
+				</row>
+			</rows>
+		</grid>
+
+
+	</window>
+</zk>

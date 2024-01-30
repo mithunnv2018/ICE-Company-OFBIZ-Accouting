@@ -1,0 +1,17 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+ 
+<zk>
+
+	<window title="Main Category" id="maincat1" border="normal" apply="org.ofbiz.ICEInc.ZkCodeBehind.CB_MainCategory">
+		
+		<hbox>
+			Enter Main Category:
+			<textbox id="txtMainCategory"   />
+		</hbox>
+		<hbox>
+			<button id="btnSave" label="Save"   />
+			<button id="btnCancel" label="Cancel"  />
+
+		</hbox>
+	</window>
+</zk>

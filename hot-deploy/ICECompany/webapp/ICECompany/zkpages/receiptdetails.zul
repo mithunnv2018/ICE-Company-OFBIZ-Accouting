@@ -1,0 +1,119 @@
+<?page title="Receipt Details" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>
+<zk>
+	<window title="Receipt Details" border="normal" id="ReceiptAddNew" apply="org.ofbiz.ICE.ZkCodeBehind.CB_ReceiptDetails">
+		<grid>
+			<columns>
+				<column label="" />
+				<column label="" />
+			</columns>
+			<rows>
+				<row>
+					Receipt No.:
+					<textbox id="txtReceiptNo" disabled="true"/>
+				</row>
+				<row>
+					Receipt Date:
+					<datebox id="dateReceipt" />
+				</row>
+				<row>
+					Customer Name:
+					<hbox>
+						<bandbox id="bdCustomer">
+							<bandpopup>
+								<panel>
+									<panelchildren>
+										<listbox
+											onSelect="bdCustomer.value=self.selectedItem.label;bdCustomer.close();"
+											id="lstCustomer" width="100px" >
+											<listhead>
+												<listheader sort="auto" />
+											</listhead>
+										</listbox>
+									</panelchildren>
+								</panel>
+							</bandpopup>
+						</bandbox>
+
+			<button id="btnRefreshCust" label="Refresh" />
+					</hbox>
+
+				</row>
+
+			</rows>
+		</grid>
+	
+		<listbox id="lstSalesOrder" checkmark="true" multiple="false">
+			<listhead>
+				
+				<listheader label="SalesOrde No." sort="auto" />				
+				<listheader label="Amount" sort="auto" />
+				<listheader label="veSo_Id" sort="auto" visible="false"/>
+			</listhead>
+			<listitem self="@{each='person'}">				
+				<listcell label="@{person.So_Nos}" />
+				<listcell label="@{person.SumPayment}" />
+				<listcell label="@{person.So_Id}" visible="false"/>
+			</listitem>
+		</listbox>
+
+
+		<grid>
+			<columns>
+				<column label="" />
+				<column label="" />
+			</columns>
+			<rows>
+			<row>
+			<hbox>
+						<button id="btnAdjust" label="Adjust" />
+						<button id="btnReset" label="Reset" />
+						</hbox>
+			</row>
+			<row>
+					Bill Amount:
+					<textbox id="txtBillamt" disabled="true" />
+				</row>
+				<row>
+					Paid Amount:
+					<textbox id="txtPaidamt" />
+				</row>
+				<row>
+					Amount to be Adjusted:
+					<textbox id="txttobeAdjust" disabled="true"/>
+				</row>
+				<row>
+					Payment Type:
+					<hbox>
+						<bandbox id="bdPaymenttype">
+							<bandpopup>
+								<panel>
+									<panelchildren>
+										<listbox
+											onSelect="bdPaymenttype.value=self.selectedItem.label;bdPaymenttype.close();"
+											id="lstpaymenttype" width="100px" >
+											<listhead>
+												<listheader sort="auto" />
+											</listhead>
+										</listbox>
+									</panelchildren>
+								</panel>
+							</bandpopup>
+						</bandbox>
+				
+					</hbox>
+				</row>
+				<row>
+					Remarks:
+					<textbox id="txtRemarks" />
+				</row>
+
+
+			</rows>
+		</grid>
+		<hbox>
+			<button id="btnSave" label="Save" />
+			<button id="btnCancel" label="Cancel" />
+		</hbox>
+	</window>
+</zk>

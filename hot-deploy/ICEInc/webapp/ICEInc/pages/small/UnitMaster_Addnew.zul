@@ -1,0 +1,15 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="unitmaster1" title="Add New Unit Master" border="normal">
+		<vbox>
+			<hbox>
+				Enter Unit Name:
+				<textbox />
+			</hbox>
+			<hbox>
+				<button label="Save" onClick="" />
+				<button label="Cancel" onClick="" />
+			</hbox>
+		</vbox>
+	</window>
+</zk>

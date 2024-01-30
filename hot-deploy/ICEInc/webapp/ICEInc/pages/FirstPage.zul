@@ -1,0 +1,345 @@
+<?page title="The Main" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>
+<zk>
+	<window title="The Main" border="normal"
+		apply="org.ofbiz.ICEInc.MyMVC">
+		<zscript><![CDATA[
+	import java.util.*;
+	ArrayList a = new ArrayList();
+	a.add("Mithun");
+	a.add("Atul");
+	String[] b = { "Mithun", "AtuL" };
+]]></zscript>
+
+
+		<tabbox>
+			<tabs>
+				<tab label="Catalog" />
+				<tab label="Report" />
+			</tabs>
+			<tabpanels>
+				<tabpanel>
+					<tabbox>
+						<tabs>
+							<tab label="Main Category" />
+							<tab label="Sub Category" />
+							<tab label="Stock Category" />
+							<tab label="Unit Master" />
+						</tabs>
+						<tabpanels>
+							<tabpanel id="Main_Category">
+								<tabbox>
+									<tabs>
+										<tab label="Add New"
+											id="tp_mainCategoryAddnew"
+											apply="org.ofbiz.ICEInc.ZkCodeBehind.CB_MainCategory" />
+										<tab label="Modify"
+											id="tp_mainCategoryModify"
+											apply="org.ofbiz.ICEInc.ZkCodeBehind.CB_MainCategory" />
+									</tabs>
+									<tabpanels>
+										<tabpanel>
+											<include id="include_main1"
+												mode="instant" src="/pages/small/MainCategory_Addnew.zul" />
+											<!--<window
+												title="Main Category" border="normal">
+												<hbox>
+												Enter Main Category:
+												<textbox />
+												</hbox>
+												<hbox>
+												<button label="Save"
+												onClick="" />
+												<button
+												label="Cancel" onClick="" />
+												
+												</hbox>
+												</window>
+											-->
+										</tabpanel>
+
+										<tabpanel>
+											<include id="include_main2"
+												src="/pages/small/Maincategory_Modify.zul" />
+											<!--<window
+												title="Select the following Category to modify!"
+												border="normal">
+												<grid
+												id="showmaincategory">
+												<columns>
+												<column
+												label="Select" />
+												<column
+												label="Main Categories" />
+												</columns>
+												<rows>
+												<row></row>
+												</rows>
+												</grid>
+												
+												<hbox>
+												<button label="Edit"
+												onClick="" />
+												<button label="Cancel"
+												onClick="" />
+												</hbox>
+												</window>-->
+
+										</tabpanel>
+									</tabpanels>
+								</tabbox>
+							</tabpanel>
+							<tabpanel id="Sub_Category">
+								<tabbox>
+									<tabs>
+										<tab label="Add New" />
+										<tab label="Modify" />
+									</tabs>
+									<tabpanels>
+										<tabpanel
+											id="tp_subCategoryAddnew">
+											<include id="include_sub1"
+												src="/pages/small/SubCategory_Addnew.zul" />
+											<!--<window title="Sub Category"
+												border="normal">
+												<hbox>
+												Enter Sub-Category:
+												<textbox />
+												</hbox>
+												<hbox>
+												Enter Main Category:
+												<bandbox id="bd">
+												<bandpopup>
+												<panel>
+												<panelchildren>
+												<listbox
+												onSelect="bd.value=self.selectedItem.label;bd.close();"
+												id="MainCategory" width="100px" model="@{a}">
+												<listhead>
+												<listheader
+												sort="auto" />
+												
+												</listhead>
+												
+												
+												</listbox>
+												
+												</panelchildren>
+												</panel>
+												</bandpopup>
+												</bandbox>
+												<combobox>
+												<comboitem
+												label="Lookup" />
+												<comboitem
+												label="" />
+												</combobox>
+												</hbox>
+												
+												<hbox>
+												<button label="Save"
+												onClick="" />
+												<button
+												label="Cancel" onClick="" />
+												</hbox>
+												</window>
+											-->
+										</tabpanel>
+
+										<tabpanel
+											id="tp_subCategoryModify">
+											<include id="include_sub2"
+												src="/pages/small/SubCategory_Modify.zul" />
+											<!--
+												<window
+												title="Select the following Sub-Category to Modify"
+												border="normal">
+												<grid
+												id="showSubCategory">
+												<columns>
+												<column
+												label="Select" />
+												<column
+												label="Sub-Category" />
+												<column
+												label="Main Category" />
+												</columns>
+												<rows>
+												<row></row>
+												</rows>
+												</grid>
+												<hbox>
+												<button label="Edit"
+												onClick="" />
+												<button
+												label="Cancel" onClick="" />
+												</hbox>
+												</window>
+												
+											-->
+										</tabpanel>
+									</tabpanels>
+								</tabbox>
+
+							</tabpanel>
+
+							<tabpanel id="Stock_Category">
+								<tabbox>
+									<tabs>
+										<tab label="Add New" />
+										<tab label="Modify" />
+									</tabs>
+									<tabpanels>
+										<tabpanel
+											id="tp_stockCategoryAddnew">
+											<include id="include_stock1"
+												src="/pages/small/StockCategory_Addnew.zul" />
+											<!--<window
+												title="Enter Stock Category" border="normal">
+												<vbox>
+												<hbox>
+												Stock Category
+												Name:
+												<textbox />
+												</hbox>
+												<hbox>
+												Main Category :
+												<combobox>
+												<comboitem
+												label="lookup" />
+												<comboitem
+												label="" />
+												</combobox>
+												</hbox>
+												<hbox>
+												Sub-Category
+												Name:
+												<combobox>
+												<comboitem
+												label="lookup" />
+												<comboitem
+												label="" />
+												</combobox>
+												
+												</hbox>
+												
+												</vbox>
+												
+												</window>
+											-->
+										</tabpanel>
+										<tabpanel
+											id="tp_stockCategoryModify">
+											<include id="include_stock2"
+												src="/pages/small/StockCategory_Modify.zul" />
+											<!--<window
+												title="Modify Stock Category" border="normal">
+												<grid
+												id="ShowStockCategory">
+												<columns>
+												<column
+												label="Select" />
+												<column
+												label="Stock Category" />
+												<column
+												label="Main Category" />
+												<column
+												label="Sub-Category" />
+												</columns>
+												<rows>
+												<row></row>
+												</rows>
+												</grid>
+												<hbox>
+												<button label="Edit"
+												onClick="" />
+												<button
+												label="Cancel" onClick="" />
+												</hbox>
+												</window>
+											-->
+										</tabpanel>
+									</tabpanels>
+								</tabbox>
+							</tabpanel>
+							<tabpanel id="Unit_Master">
+								<tabbox>
+									<tabs>
+										<tab label="Add New" />
+										<tab label="Modify" />
+									</tabs>
+									<tabpanels>
+										<tabpanel
+											id="tp_unitMasterAddnew">
+											<include id="include_unit1"
+												src="/pages/small/UnitMaster_Addnew.zul" />
+											<!--<window
+												title="Add New Unit Master" border="normal">
+												<vbox>
+												<hbox>
+												Enter Unit Name:
+												<textbox />
+												</hbox>
+												<hbox>
+												<button
+												label="Save" onClick="" />
+												<button
+												label="Cancel" onClick="" />
+												</hbox>
+												</vbox>
+												</window>
+											-->
+										</tabpanel>
+										<tabpanel
+											id="tp_unitMasterModify">
+											<include id="include_unit2"
+												src="/pages/small/UnitMaster_Modify.zul" />
+											<!--<window
+												title="Select the follwoing Unit Master" border="normal">
+												<grid>
+												<columns>
+												<column
+												label="Select" />
+												<column
+												label="Unit Master" />
+												</columns>
+												<rows>
+												<row></row>
+												</rows>
+												</grid>
+												<hbox>
+												<button label="Edit"
+												onClick="" />
+												<button
+												label="Cancel" onClick="" />
+												</hbox>
+												</window>
+											-->
+										</tabpanel>
+									</tabpanels>
+								</tabbox>
+							</tabpanel>
+
+						</tabpanels>
+					</tabbox>
+
+				</tabpanel>
+				<tabpanel>
+					<tabbox>
+						<tabs>
+							<tab label="Report for Main Category" />
+							<tab label="" />
+						</tabs>
+						<tabpanels>
+							<tabpanel id="tp_reportmaincat">
+								<include id="include_reportMainCat"
+									src="/report/ReportStartHtml.zul" />
+							</tabpanel>
+							<tabpanel></tabpanel>
+						</tabpanels>
+					</tabbox>
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+	</window>
+</zk>

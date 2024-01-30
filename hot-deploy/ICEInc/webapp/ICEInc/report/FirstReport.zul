@@ -1,0 +1,43 @@
+<?page title="Report for ICEInc" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>
+<zk>
+	
+		<window  id="winreport1"
+			title="Report for Main Category" border="none"
+			apply="org.ofbiz.ICEInc.ZkReport.CB_ReportMainCategoryMaster">
+
+
+			<listbox id="lstReport1"
+				model="@{CB_ReportMainCatSession.reportmodel}">
+				<listhead>
+					<listheader label="[Main Category ID]" />
+					<listheader label="[Main Category Name]" />
+					<listheader label="[Primary Group ID]" />
+					<listheader label="[Is Del]" />
+					<listheader label="[Main Category Tag]" />
+
+
+				</listhead>
+
+				<listitem self="@{each=person}">
+
+					<listcell label="@{person.MainCat_Id}" />
+					<listcell label="@{person.MainCat_Name}" />
+					<listcell label="@{person.PrimGrp_Id}" />
+					<listcell label="@{person.Is_Deleted}" />
+					<listcell label="@{person.MainCat_tag}" />
+
+				</listitem>
+				<listfoot>
+					<listfooter label="End of Report 2011" />
+				</listfoot>
+
+			</listbox>
+
+			<hbox>
+				<label id="message4" value="" />
+				<button id="mytest" label="click" />
+			</hbox>
+		</window>
+
+</zk>

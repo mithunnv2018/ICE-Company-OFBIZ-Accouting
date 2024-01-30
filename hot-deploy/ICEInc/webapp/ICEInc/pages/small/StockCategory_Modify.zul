@@ -1,0 +1,55 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+
+	<zscript><![CDATA[
+	org.ofbiz.ICEInc.Stock_Category main2 = new org.ofbiz.ICEInc.Stock_Category();
+	stockcattable = main2.getStockCat2();
+]]></zscript>
+	<window id="stockcat2" title="Modify Stock Category" apply="org.ofbiz.ICEInc.Stock_Category"
+		border="normal">
+
+		<grid id="UpdateStockCat" >
+			
+
+			<rows>
+				<row>
+					<hbox>
+						<label value="Modify Stock Cat. ID" />
+						<textbox id="txtStockCatModifyId" />
+					</hbox>
+					<hbox>
+						<label value="Modify Stock Cat. Name" />
+						<textbox id="txtStockCatModifyName" />
+					</hbox>
+
+				</row>
+				<row>
+				<button label="Update" onClick="" />
+				<button label="Cancel" onClick="" />
+				</row>
+			</rows>
+		</grid>
+
+
+		<grid id="ShowStockCategory" width="30">
+			<columns>
+
+				<column label="Right" />
+
+			</columns>
+			<rows>
+				<row forEach="${main2.stockCat2}">
+
+					<label  value="${each.StockCat_Id}"
+						onClick="main2.AlertBox2(self.getValue())" />
+					<label value="${each.StockCat_Name}"
+						visible="false" />
+				</row>
+			</rows>
+		</grid>
+		<hbox>
+			<button label="Edit" onClick="" />
+			<button label="Cancel" onClick="" />
+		</hbox>
+	</window>
+</zk>
